@@ -25,4 +25,5 @@ schedule.scheduleJob('05 * * * * *', function () {
 setInterval(function () {
     console.log("Casper-traffic-creator: " + scheduleCounter);
     runCrawlers();
-}, 10 * 1000)
+}, 2 * 60 * 1000)
+// Сессия = 6 минут 30 секунд

@@ -11,7 +11,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "start": "casperjs traffic-bot.js"
+        "start": "node run-T-bot.js"
     },
     "author": "Roman Lezhnin",
     "license": ""

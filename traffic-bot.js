@@ -23,8 +23,8 @@ Step~4)
 //
 var S = require('./settings.json')
     , casper = require('casper').create({
-        waitTimeout: 15000,
-        stepTimeout: 15000,
+        waitTimeout: 20000,
+        stepTimeout: 30000,
         /*clientScripts: [
             'includes/jq.js',      // These two scripts will be injected in remote 
         ],*/
@@ -55,28 +55,37 @@ casper.start(startRandomRefererWashingPoint, function () {
             fakeLink.setAttribute('id', "washingpoint")
             document.body.appendChild(fakeLink);
         });
-    });
-/*
- Шаг 2 - клик по фейковой ссылке с реферера и переход на наш MFA
-*/
-casper.then(function () {
-    this.click('a#washingpoint');
-})
+    })
+    /*
+     Шаг 2 - клик по фейковой ссылке с реферера и переход на наш MFA
+    */
+    .then(function () {
+        this.click('a#washingpoint');
+    })
     .waitForUrl(S.MFA, function () {
         this.echo(this.getCurrentUrl());
+    })
+    /*
+     Шаг 3 - притворяемся порядочным американцем ;-)
+    */
+    .then(function () {
+        PRETENDER_homoSapiens(this);
+    })
+    .then(function () {
+        PRETENDER_homoSapiens(this);
+    })
+    .then(function () {
+        PRETENDER_homoSapiens(this);
+    })
+    .then(function () {
+        PRETENDER_homoSapiens(this);
+    })
+    //
+    //Bot start
+    //
+    .run(function () {
+        this.echo('Casper TRAFFIC-GENERATOR run').exit();
     });
-/*
- Шаг 3 - притворяемся порядочным американцем ;-)
-*/
-casper.then(function () {
-    PRETENDER_homoSapiens(this);
-});
-//
-//Bot start
-//
-casper.run(function () {
-    this.echo('Casper TRAFFIC-GENERATOR run').exit();
-});
 //
 //
 // utils:
@@ -89,34 +98,79 @@ function getRandomInt(min, max) {
 // притворяемся человеком:
 //
 function PRETENDER_homoSapiens(self) {
-    _wait(self, 2);
+
+    self.wait(getRandomInt(2, 5) * 1000, function () { });
+
     self.scrollToBottom();
-    _wait(self, 2);
-    self.scrollTo(10, 0);
-    _wait(self, 5);
+
+    self.wait(getRandomInt(2, 5) * 1000, function () { });
+
+    self.scrollTo(getRandomInt(12, 50), 0);
+
+    self.wait(getRandomInt(5, 10) * 1000, function () { });
+
     self.reload(function () { });
-    self.click('div > section:nth-child(' + (getRandomInt(1, 5) - 1) + ') iframe');
-    //
-    // go to youtube channel
-    //
-    self.waitForUrl(/www\.youtube\.com\/watch\?/, function () {
-        self.echo('PRETENDER_homoSapiens =GO= to Youtube')
-    });
-    self.back();
-    self.echo('PRETENDER_homoSapiens =RETURN= from Youtube');
-    //
-    // return to MFA site:
-    //
+
+    self.click('section.chlidren_' + getRandomInt(1, 4) + ' iframe');
+
+    self.click('section.chlidren_' + getRandomInt(1, 4) + ' img');
+
+    self.mouseEvent('mousemove', 'section.chlidren_' + getRandomInt(1, 4) + ' img', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
+
     self.scrollToBottom();
-    _wait(self, 10);
-    self.scrollTo(300, 1000);
-    /*
-mouseup, mousedown, click, dblclick, mousemove, mouseover, mouseout , mouseenter, mouseleave , contextmenu
-    */
-    //this.sendKeys('body', 'f5', { modifiers: 'ctrl+alt' });
+
+    self.wait(getRandomInt(5, 10) * 1000, function () { });
+
+    self.scrollTo(getRandomInt(200, 400), 1000);
+
+    self.wait(getRandomInt(10, 20) * 1000, function () { });
+
+    self.mouseEvent('dblclick', 'section.chlidren_' + getRandomInt(1, 4) + ' img', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
+
+    // Читает контент ;-)
+    self.scrollTo(getRandomInt(300, 700), 1000);
+
+    self.wait(getRandomInt(10, 20) * 1000, function () { });
+
+    self.scrollTo(getRandomInt(400, 500), getRandomInt(1600, 2100));
+
+    self.wait(getRandomInt(10, 20) * 1000, function () { });
+
+    self.scrollTo(0, getRandomInt(2500, 3500));
+
+    self.mouseEvent('mousemove', 'section.chlidren_' + getRandomInt(1, 4) + ' iframe', getRandomInt(5, 95) + '%', getRandomInt(10, 90) + '%');
+
+    self.wait(getRandomInt(10, 20) * 1000, function () { });
+
+    self.scrollTo(0, getRandomInt(4000, 6000));
+
+    self.scrollTo(0, 0);
+
+    self.wait(3 * 1000, function () { });
+    //
+    // Идём на следующий раздел сайта:
+    //
+    self.click('header nav > a:nth-child(' + getRandomInt(1, 12) + ')');
+
+    self.waitForUrl(/\.html$/, function () {
+        self.echo('redirected to INSIDE.html');
+    });
+
+    self.wait(getRandomInt(2, 5) * 1000, function () { });
+
+    self.mouseEvent('dblclick', 'section.chlidren_' + getRandomInt(1, 4) + ' p', getRandomInt(5, 95) + '%', getRandomInt(5, 95) + '%');
+
+    self.sendKeys('body', 'a', { modifiers: 'ctrl' });
+
+    self.wait(3 * 1000, function () { });
+
+    self.sendKeys('body', 'с', { modifiers: 'ctrl' });
+
+    self.scrollTo(0, 3000);
+
+    self.mouseEvent('mousemove', 'section.chlidren_' + getRandomInt(1, 4) + ' p', '20%', '50%');
 
 }
-//
-_wait = function (self, sec) {
-    return self.wait(sec * 1000, function () { });
-}
+/*
+    mouseup, mousedown, click, dblclick, mousemove, mouseover, mouseout , mouseenter, mouseleave , contextmenu
+*/
