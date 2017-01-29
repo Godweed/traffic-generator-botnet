@@ -9,11 +9,5 @@
     "googleSEARCHBAR": "input.gsfi",
     "googleSEARCHBUTTON": "button.sbico-c",
     "googleOUTPUT": "h3.r a",
-    "showDelayMinutes": 1,
-    "REF": [
-        "https://lenta.ru/",
-        "https://www.nytimes.com/",
-        "https://nodejs.org",
-        "https://www.youtube.com/"
-    ]
+    "showDelayMinutes": 1  
 }

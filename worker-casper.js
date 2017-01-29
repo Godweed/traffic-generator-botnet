@@ -42,11 +42,10 @@ setInterval(function () {
     console.log("Casper-traffic-creator work: " + scheduleCounter + ' times;');
     //logger.info("Casper-traffic-creator work: " + scheduleCounter + ' times;');
     runCrawlers();
-}, 3.3 * 60 * 1000);
+}, 3.2 * 60 * 1000);
 // Сессия === 1 минута 03 секунды
-/*
+
 setInterval(function () {
     logger.log("Casper-traffic-creator work: " + scheduleCounter + ' times;');
     runCrawlers();
 }, 120 * 60 * 1000);
-*/
