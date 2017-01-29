@@ -5,6 +5,8 @@
     "description": "MFA-traffic-net-bot",
     "main": "none",
     "dependencies": {
+        "pm2": "^2.3.0",
+        "winston": "^2.3.0",
         "node-schedule": "1.2.0",
         "phantomjs": "^2.1.0",
         "casperjs": "^1.1.3"
