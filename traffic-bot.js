@@ -29,29 +29,24 @@ Step~4) Чтобы не спалиться:
 //
 var S = require('./settings.json')
     , REF = require('./referer.js')
-    , custom_cookie = require('./cookie.js')
+    , UA_storage = require('./UA_storage.js')
+    , custom_cookie = require('./cookie.js').google
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
-    , PRETENDER_cookie = custom_cookie[getRandomInt(0, custom_cookie.length - 1)]
+    //, PRETENDER_cookie = custom_cookie[getRandomInt(0, custom_cookie.length - 1)]
     , PRETENDER_headers = {
+        "Cookie": custom_cookie,
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        "Accept-Encoding": "gzip, deflate, sdch, br",
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Connection': 'keep-alive',
+        'Accept-Language': 'en-US,en;q=0.9',
         "Cache-Control": "no-cache",
-        "Cookie": PRETENDER_cookie,
-        "Host": startRandomRefererWashingPoint,
         "Origin": startRandomRefererWashingPoint,
-        "Pragma": "no - cache",
-        "Sec-WebSocket - Extensions": "permessage-deflate; client_max_window_bits",
-        "Sec- WebSocket - Key": "gi5Z8h+b7ZwTkYFQ2VHXcQ ==",
-        "Upgrade": "websocket",
         'Referer': startRandomRefererWashingPoint,
-        "User- Agent": generateNewUserAgent()
+        'X-Forwarded-For': startRandomRefererWashingPoint,
+        "User-Agent": generateNewUserAgent()
     }
 
-    , casper = require('casper').create({     // phantom.addCookie
-        waitTimeout: 30000,
-        stepTimeout: 50000,
+    , casper = require('casper').create({
+        waitTimeout: 70000,
+        stepTimeout: 70000,
         viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
         pageSettings: {
             customHeaders: PRETENDER_headers,
@@ -70,12 +65,10 @@ var S = require('./settings.json')
 /*
  Шаг 1 - стартуем с реферера
 */
-casper
-    .start(startRandomRefererWashingPoint, function () {
-        this.echo(this.getCurrentUrl());
-    })
-    .viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900))
-    .userAgent(generateNewUserAgent())
+casper.start(startRandomRefererWashingPoint, function () {
+    this.echo(this.getCurrentUrl());
+})
+    .viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent())
     .then(function () {
         this.evaluate(function () {
             var fakeLink = document.createElement('a');
@@ -89,10 +82,21 @@ casper
     */
     .then(function () {
         this.click('a#washingpoint');
+        this.echo("=== Кликаю на реферер");
     })
+
     .waitForUrl(S.MFA, function () {
+        this.echo("=== Дождался загрузки URL ВЕБДРИМТИМа");
         this.echo(this.getCurrentUrl());
     })
+
+    .waitForSelector('body', function () {
+        this.echo("=== Дождался загрузки контента ВЕБДРИМТИМа");
+        this.echo(this.getCurrentUrl());       
+    })
+
+
+    //.wait(5 * 1000, function () { })
     /*
      Шаг 3 - притворяемся порядочным американцем ;-)   
     */
@@ -100,7 +104,7 @@ casper
         PRETENDER_homoSapiens__backend(this);
     })
     .then(function () {
-        this.evaluate(PRETENDER_homoSapiens__frontend);
+        this.evaluate(PRETENDER_homoSapiens__frontend_scroll);
     })
     .then(function () {
         PRETENDER_homoSapiens__backend(this);
@@ -110,6 +114,18 @@ casper
     })
     .then(function () {
         PRETENDER_homoSapiens__backend(this);
+    })
+    .then(function () {
+        this.evaluate(PRETENDER_homoSapiens__frontend);
+    })
+    .then(function () {
+        PRETENDER_homoSapiens__backend(this);
+    })
+    .then(function () {
+        this.evaluate(PRETENDER_homoSapiens__frontend_scroll);
+    })
+    .then(function () {
+        this.evaluate(PRETENDER_homoSapiens__frontend);
     })
     //
     //Bot start
@@ -126,40 +142,44 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 function generateNewUserAgent() {
-    var version1 = (Math.random() * 1000).toFixed(2).toString(), version2 = (Math.random() * 10000).toFixed(3).toString();
-    return 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/' + version1 + ' (KHTML, like Gecko) Chrome/51.0.' + version2 + ' Safari/' + version1;
+    return UA_storage[getRandomInt(0, UA_storage.length - 1)];
 }
 //
 // притворяемся человеком:    зарандомить порядок действий, кроме перехода к след.  вкладке
 //
 /*
     X / Y - coordinates
-    self.mouse.move(getRandomInt(100, 1600), getRandomInt(10, 7529)); 
     mouseup, mousedown, click, dblclick, mousemove, mouseover, mouseout , mouseenter, mouseleave , contextmenu
 */
 function PRETENDER_homoSapiens__backend(self) {
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7400));
+    }
     self.wait(getRandomInt(2, 5) * 1000, function () { });
     self.scrollToBottom();
     for (var i = 0; i < 500; i += 1) {
         self.scrollTo(getRandomInt(1, 1100), getRandomInt(1, 7450));
     }
-    self.sendKeys('section.chlidren_' + getRandomInt(1, 4) + ' iframe', 'space');
-    self.click('section.chlidren_' + getRandomInt(1, 4) + ' iframe');
+    self.sendKeys('section.chlidren_' + getRandomInt(1, 4) + ' iframe ', 'space');
+    self.click('section.chlidren_' + getRandomInt(1, 4) + '  ');
     self.wait(getRandomInt(2, 5) * 1000, function () { });
     for (var i = 0; i < 100; i += 1) {
         self.mouseEvent('mousemove', '#main-content', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
     }
     self.wait(getRandomInt(2, 5) * 1000, function () { });
-    for (var i = 0; i < 50; i += 1) {
+    for (var i = 0; i < 5; i += 1) {
         self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7400));
     }
     self.wait(3 * 1000, function () { });
     //self.reload(function () { });
-    for (var i = 0; i < 100; i += 1) {
+    for (var i = 0; i < 50; i += 1) {
         self.scrollTo(getRandomInt(10, 500), getRandomInt(6000, 7100));
         self.scrollTo(getRandomInt(100, 700), getRandomInt(2200, 2300));
         self.scrollTo(getRandomInt(200, 800), getRandomInt(4400, 3500));
         self.scrollTo(getRandomInt(300, 900), getRandomInt(4600, 3900));
+    }
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7400));
     }
     self.wait(getRandomInt(5, 10) * 1000, function () { });
     for (var i = 0; i < 50; i += 1) {
@@ -170,7 +190,10 @@ function PRETENDER_homoSapiens__backend(self) {
         self.mouse.move(getRandomInt(500, 600), getRandomInt(400, 600));
     }
     self.wait(getRandomInt(5, 10) * 1000, function () { });
-    self.sendKeys('section.chlidren_' + getRandomInt(1, 4) + ' iframe', 'space');
+    self.sendKeys('section.chlidren_' + getRandomInt(1, 4) + '  iframe', 'space');
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7400));
+    }
     self.scrollToBottom();
     for (var i = 0; i < 50; i += 1) {
         self.scrollTo(getRandomInt(10, 500), getRandomInt(3000, 3100));
@@ -183,15 +206,20 @@ function PRETENDER_homoSapiens__backend(self) {
     self.wait(getRandomInt(5, 10) * 1000, function () { });
     for (var i = 0; i < 10; i += 1) {
         self.mouseEvent('mousemove', 'section.chlidren_' + getRandomInt(1, 4) + ' img', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
-        self.click('section.chlidren_' + getRandomInt(1, 4) + ' iframe');
+        self.click('section.chlidren_' + getRandomInt(1, 4) + '  iframe');
     }
     self.wait(3 * 1000, function () { });
-    for (var i = 0; i < 50; i += 1) {
+    for (var i = 0; i < 5; i += 1) {
         self.mouse.move(getRandomInt(100, 1100), getRandomInt(100, 7400));
         self.click('section.chlidren_' + getRandomInt(1, 4) + ' img');
-        self.wait(2, function () { });
+        self.wait(1, function () { });
     }
     self.wait(getRandomInt(5, 10) * 1000, function () { });
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.move(getRandomInt(100, 1100), getRandomInt(100, 7400));
+        self.click('section.chlidren_' + getRandomInt(1, 4) + ' img');
+        self.wait(1, function () { });
+    }
     self.scrollToBottom();
     //self.reload(function () { });
     self.mouseEvent('dblclick', 'section.chlidren_' + getRandomInt(1, 4) + ' img', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
@@ -203,7 +231,7 @@ function PRETENDER_homoSapiens__backend(self) {
         self.echo('redirected to INSIDE.html');
     });
     self.mouseEvent('dblclick', 'section.chlidren_' + getRandomInt(1, 4) + ' img', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
-    for (var i = 0; i < 50; i += 1) {
+    for (var i = 0; i < 20; i += 1) {
         self.mouse.move(getRandomInt(700, 600), getRandomInt(4800, 4500));
         self.mouse.move(getRandomInt(700, 800), getRandomInt(5200, 5000));
         self.mouse.move(getRandomInt(500, 900), getRandomInt(5400, 5300));
@@ -213,23 +241,36 @@ function PRETENDER_homoSapiens__backend(self) {
     self.mouseEvent('dblclick', 'section.chlidren_' + getRandomInt(1, 4) + ' p', getRandomInt(5, 95) + '%', getRandomInt(5, 95) + '%');
     self.sendKeys('body', 'a', { modifiers: 'ctrl' });
     self.wait(getRandomInt(5, 10) * 1000, function () { });
-    for (var i = 0; i < 50; i += 1) {
+    for (var i = 0; i < 20; i += 1) {
         self.mouse.move(getRandomInt(100, 200), getRandomInt(10, 200));
         self.mouse.move(getRandomInt(200, 300), getRandomInt(100, 300));
         self.mouse.move(getRandomInt(300, 400), getRandomInt(200, 400));
         self.mouse.move(getRandomInt(400, 500), getRandomInt(300, 500));
         self.mouse.move(getRandomInt(500, 600), getRandomInt(400, 600));
     }
-    self.click('section.chlidren_' + getRandomInt(1, 4) + ' iframe');
+    self.click('section.chlidren_' + getRandomInt(1, 4) + '  iframe');
     self.wait(getRandomInt(2, 5) * 1000, function () { });
+    for (var i = 0; i < 10; i += 1) {
+        self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7400));
+    }
     self.sendKeys('body', 'с', { modifiers: 'ctrl' });
-    for (var i = 0; i < 100; i += 1) {
+    for (var i = 0; i < 50; i += 1) {
         self.scrollTo(getRandomInt(10, 500), getRandomInt(10, 1000));
         self.scrollTo(getRandomInt(100, 700), getRandomInt(100, 2500));
         self.scrollTo(getRandomInt(200, 800), getRandomInt(200, 3700));
         self.scrollTo(getRandomInt(300, 900), getRandomInt(300, 4900));
     }
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.move(getRandomInt(100, 1100), getRandomInt(100, 7400));
+        self.click('section.chlidren_' + getRandomInt(1, 4) + ' img');
+        self.wait(1, function () { });
+    }
     self.click('header nav > a:nth-child(' + getRandomInt(1, 12) + ')');
+    for (var i = 0; i < 5; i += 1) {
+        self.mouse.move(getRandomInt(100, 1100), getRandomInt(100, 7400));
+        self.click('section.chlidren_' + getRandomInt(1, 4) + ' img');
+        self.wait(1, function () { });
+    }
 }
 /*
 В общем порядке, алгоритм един: 
@@ -239,18 +280,20 @@ function PRETENDER_homoSapiens__backend(self) {
     — назначить событие на необходимый узел DOM;
 */
 function PRETENDER_homoSapiens__frontend() {
+    document.body.scrollTop = 0;
     var ConstructorMouseEvent = document.createEvent('MouseEvents')
         , ConstructorKeyEvent = document.createEvent('UIEvents')
         , $header = document.querySelector('header nav')
         , $div = document.querySelector('div#main-content')
         , $section = document.querySelector('section.chlidren_' + getRandomInt(1, 4))
         , $IMG = document.querySelector('section.chlidren_' + getRandomInt(1, 4) + ' img')
-        , $iframe = document.querySelector('section.chlidren_' + getRandomInt(1, 4) + ' iframe')
+        , $iframe = document.querySelector('section.chlidren_' + getRandomInt(1, 4) + '  iframe')
         , $p = document.querySelector('section.chlidren_' + getRandomInt(1, 4) + ' p');
     ConstructorKeyEvent.initUIEvent('keyup', true, true, window, 1);
     ConstructorKeyEvent.keyCode = getRandomInt(1, 30);
     // Emit:
-    for (var i = 0; i < 50; i += 1) {
+    for (var i = 0; i < 100; i += 1) {
+        document.body.scrollTop += 20;
         ConstructorMouseEvent.initMouseEvent('mousemove', true, true, window, 1, getRandomInt(10, 900), getRandomInt(10, 7500), getRandomInt(10, 900), getRandomInt(10, 7500), false, false, true, false, 0, null);
         $header.dispatchEvent(ConstructorMouseEvent);
         $section.dispatchEvent(ConstructorMouseEvent);
@@ -258,7 +301,9 @@ function PRETENDER_homoSapiens__frontend() {
         $iframe.dispatchEvent(ConstructorMouseEvent);
         $p.dispatchEvent(ConstructorMouseEvent);
     }
-    for (var i = 0; i < 10; i += 1) {
+    document.body.scrollTop = 7400;
+    for (var i = 0; i < 30; i += 1) {
+        document.body.scrollTop -= 20;
         ConstructorMouseEvent.initMouseEvent('click', true, true, window, 1, 500, getRandomInt(100, 5000), 300, getRandomInt(10, 500), false, false, true, false, 0, null);
         $section.dispatchEvent(ConstructorMouseEvent);
         $IMG.dispatchEvent(ConstructorMouseEvent);
@@ -268,12 +313,16 @@ function PRETENDER_homoSapiens__frontend() {
         $div.dispatchEvent(ConstructorKeyEvent);
         $header.dispatchEvent(ConstructorKeyEvent);
     }
-    __utils__.echo("PRETENDER_homoSapiens__frontend!");
 }
-
+function PRETENDER_homoSapiens__frontend_scroll() {
+    document.body.scrollTop = 0;
+    for (var i = 0; i < 3700; i += 1) {
+        document.body.scrollTop += 2;
+    }
+    for (var i = 0; i < 3700; i += 1) {
+        document.body.scrollTop -= 2;
+    }
+}
 //
 // initMouseEvent ( 'type', bubbles, cancelable, windowObject, detail, screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey, button, relatedTarget )
 //
-
-function pretender_keypresser__YoutubeVideo() {
-}

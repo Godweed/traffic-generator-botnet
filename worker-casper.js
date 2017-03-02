@@ -1,50 +1,44 @@
-//const schedule = require('node-schedule')
 var exec = require('child_process').exec
     , logger = require('./logger')('MFA-traffic-generator')
 
-    , scheduleCounter = 1;
+    , scheduleCounter = 0;
 
 function runCrawlers() {
     var process1 = exec('casperjs traffic-bot.js')
         , process2 = exec('casperjs traffic-bot.js')
         , process3 = exec('casperjs traffic-bot.js')
-        , process4 = exec('casperjs traffic-bot.js');
-
-    process1.stdout.on('data', function (data) {
-        //scheduleCounter++;
-        //console.log('[process-1]', data.trim());
-    });
-    process2.stdout.on('data', function (data) {
-        // scheduleCounter++;
-        //console.log('[process-2]', data.trim());
-    });
-
-    process3.stdout.on('data', function (data) {
-        // scheduleCounter++;
-        //console.log('[process-3]', data.trim());
-    });
-
-    process4.stdout.on('data', function (data) {
-        //scheduleCounter++;
-        //console.log('[process-4]', data.trim());
-    });
-    scheduleCounter++;
+        , process4 = exec('casperjs traffic-bot.js')
+        , process5 = exec('casperjs traffic-bot.js')
+        , process6 = exec('casperjs traffic-bot.js')
+        , process7 = exec('casperjs traffic-bot.js')
+        , process8 = exec('casperjs traffic-bot.js')
+        , process9 = exec('casperjs traffic-bot.js')
+        , process10 = exec('casperjs traffic-bot.js');
+    /*
+    var process1 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process2 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process3 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process4 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process5 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process6 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process7 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process8 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process9 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
+        , process10 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js');
+        */
+    scheduleCounter += 10;
 }
 
-/*
-schedule.scheduleJob('05  * * * *', function () {
-   console.log("Casper-traffic-creator: " + scheduleCounter);
-    //runCrawlers();
-});
-*/
+
+runCrawlers();
+runCrawlers();
+
+
+
 
 setInterval(function () {
     console.log("Casper-traffic-creator work: " + scheduleCounter + ' times;');
     //logger.info("Casper-traffic-creator work: " + scheduleCounter + ' times;');
     runCrawlers();
-}, 3.3 * 60 * 1000);
-// Сессия === 1 минута 03 секунды
-
-setInterval(function () {
-    logger.log("Casper-traffic-creator work: " + scheduleCounter + ' times;');
-}, 120 * 60 * 1000);
+    runCrawlers();
+}, 1 * 60 * 1000);
