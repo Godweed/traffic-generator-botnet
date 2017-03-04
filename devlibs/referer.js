@@ -8,7 +8,7 @@ module.exports = {
         "https://www.reddit.com/",
         "https://www.amazon.com/",
         "https://www.yahoo.com/",
-        "https://twitter.com",
+        "https://t.com",
         "http://www.ebay.com/",
         "https://www.linkedin.com/",
         "https://www.netflix.com/",
