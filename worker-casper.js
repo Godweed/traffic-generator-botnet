@@ -1,49 +1,38 @@
-var exec = require('child_process').exec
-    , logger = require('./logger')('MFA-traffic-generator')
+var exec = require('child_process').exec, scheduleCounter = 0;
+const command = 'casperjs --proxy=127.0.0.1:3000 --ignore-ssl-errors=true traffic-bot.js';
 
-    , scheduleCounter = 0;
-
-function runCrawlers() {
-    var process1 = exec('casperjs traffic-bot.js')
-        , process2 = exec('casperjs traffic-bot.js')
-        , process3 = exec('casperjs traffic-bot.js')
-        , process4 = exec('casperjs traffic-bot.js')
-        , process5 = exec('casperjs traffic-bot.js')
-        , process6 = exec('casperjs traffic-bot.js')
-        , process7 = exec('casperjs traffic-bot.js')
-        , process8 = exec('casperjs traffic-bot.js')
-        , process9 = exec('casperjs traffic-bot.js')
-        , process10 = exec('casperjs traffic-bot.js');
-    /*
-    var process1 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process2 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process3 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process4 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process5 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process6 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process7 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process8 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process9 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js')
-        , process10 = exec('casperjs --proxy=127.0.0.1:3000 traffic-bot.js');
-        */
-    scheduleCounter += 10;
+function runCrawlers(command) {
+    var process1 = exec(command)
+        , process2 = exec(command)
+        , process3 = exec(command)
+        , process4 = exec(command)
+        , process5 = exec(command);
+    scheduleCounter += 5;
 }
 
-
-runCrawlers();
-runCrawlers();
-runCrawlers();
-runCrawlers();
-runCrawlers();
-runCrawlers();
-runCrawlers();
-runCrawlers();
-
-
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
+runCrawlers(command);
 
 setInterval(function () {
-    console.log("Casper-traffic-creator work: " + scheduleCounter + ' times;');
-    //logger.info("Casper-traffic-creator work: " + scheduleCounter + ' times;');
-    runCrawlers();
-    runCrawlers();
-}, 1 * 60 * 1000);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    runCrawlers(command);
+    console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter} >>     times;`);
+}, 60 * 1000);

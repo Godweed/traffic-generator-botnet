@@ -1,12 +1,4 @@
-module.exports = [ 
-  'Insurance',
-  'Loans',
-  'Mortgage',
-  'Attorney',
-  'Credit',
-  'Lawyer',
-  'Donate',
-  'Degree',
-  'Hosting',
-  'Claim',
-  'Startups' ]
+module.exports = [
+    'word1',
+    'word2'
+];
