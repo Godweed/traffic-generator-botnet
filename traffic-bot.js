@@ -31,10 +31,13 @@ var S = require('./devlibs/settings.json') // параметры вебстра�
         verbose: true
     })
 
-    , mouse = require("mouse").create(casper);
-/*
+    , mouse = require("mouse").create(casper)
+
     , kindOfCrawling = [
-        'direct'
+        'direct',
+        'referer',
+        'referer',
+        'referer'
     ]
     //
     // BOT INIT:
@@ -42,19 +45,22 @@ var S = require('./devlibs/settings.json') // параметры вебстра�
     , startStepChance = kindOfCrawling[getRandomInt(0, kindOfCrawling.length - 1)];
 console.log('< Botnet start by  {' + startStepChance + '} />');
 
- //        Шаг 1 - стартуем с..... 
+
+
+
+//        Шаг 1 - стартуем с..... 
+
+
+
 
 if (startStepChance == 'organicSearch') {
     //
     // ...поисковой выдачи
     //
     casper.start().userAgent(generateNewUserAgent()).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900))
-        .thenOpen('https://yandex.ru/search/?text=web&lr=213', function () {
+        .thenOpen('https://google.com/', function () {
             this.page.injectJs('devlibs/keywordsInjector.js');
-            var inject_keywords = this.evaluate(function () {
-                return window.keywords;
-            });
-            console.log("Мы передали?", inject_keywords);
+            this.page.injectJs('devlibs/injectURL.js');
             this.waitForSelector('a.organic__url');
         })
         .viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent())
@@ -100,16 +106,18 @@ if (startStepChance == 'organicSearch') {
     // ...прямого перехода
     casper.start(S.targetURL).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
 }
-*/
+
+
 /*
     NEXT ()=>
                      Шаг 2 -  переход на наш сайт:
 */
-casper.start(S.targetURL).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent())
-    .waitForUrl(S.targetURL, function () {
-        casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
-        this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
-    })
+
+
+casper.waitForUrl(S.targetURL, function () {
+    casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
+    this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
+})
     .waitForSelector('body', function () {
         this.echo("=== Дождался загрузки контента ВЕБДРИМТИМа");
         this.echo(this.getCurrentUrl());

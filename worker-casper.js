@@ -1,31 +1,27 @@
 var exec = require('child_process').exec
     , net = require('net')
-    , scheduleCounter = 0
-    , minutes = 3;
+    , scheduleCounter = 0;
 
 const command = 'casperjs --proxy-type=socks5 --proxy=127.0.0.1:9050 --ssl-protocol=any --ignore-ssl-errors=true traffic-bot.js';
 
 function runPretenders(command) {
-    for (let i = 0; i < 15; i += 1) {
-        attemptRenewTorSession(function (e, msg) {
-            if (msg) {
-                var process = exec(command)
-                scheduleCounter++;
-            } else {
-                console.log(`attemptRenewTorSession false  :(  `, e);
-            }
-        });
-    }
+    attemptRenewTorSession(function (e, msg) {
+        if (msg) {
+            var process = exec(command);
+            scheduleCounter++;
+        } else {
+            console.log(`attemptRenewTorSession false  :(  `, e);
+        }
+    });
 }
-
-
-runPretenders(command);
-
-
 setInterval(function () {
     runPretenders(command);
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter} >>     times;`);
-}, minutes * 60 * 1000);
+}, 1000);
+setInterval(function () {
+    console.log(`---restart node process---`);
+    process.exit();
+}, 180 * 1000);
 //
 //
 // Функции смены IP:
