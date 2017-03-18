@@ -23,7 +23,7 @@ var S = require('./devlibs/settings.json') // параметры вебстра�
         stepTimeout: 60000,
         viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
         pageSettings: {
-            //customHeaders: PRETENDER_headers,
+            customHeaders: PRETENDER_headers,
             loadImages: true,
             loadPlugins: true
         },
@@ -113,6 +113,7 @@ casper.start(S.targetURL).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1
     .waitForSelector('body', function () {
         this.echo("=== Дождался загрузки контента ВЕБДРИМТИМа");
         this.echo(this.getCurrentUrl());
+        //this.capture('.net.png');
         this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
     })
     /*
@@ -217,7 +218,7 @@ function PRETENDER_indexPage(self) {
     //
     // Идём на следующий раздел сайта:
     //
-    self.capture('--PRETENDER_articlePage.png');
+    // self.capture('--PRETENDER_articlePage.png');
     self.click('header nav > a:nth-child(' + getRandomInt(1, 12) + ')');
 }
 
@@ -238,7 +239,7 @@ function PRETENDER_articlePage(self) {
     for (var i = 0; i < 500; i += 1) {
         self.scrollTo(getRandomInt(1, 1000), getRandomInt(1, 7050));
     }
-    self.capture('PRETENDER_articlePage.png');
+    //self.capture('PRETENDER_articlePage.png');
     self.wait(getRandomInt(2, 5) * 1000, function () { });
     //self.reload(function () { });
     for (var i = 0; i < 50; i += 1) {
