@@ -1,6 +1,7 @@
 var exec = require('child_process').exec
     , net = require('net')
-    , scheduleCounter = 0;
+    , scheduleCounter = 0
+    , cores = require('os').cpus().length;
 
 const command = 'casperjs --proxy-type=socks5 --proxy=127.0.0.1:9050 --ssl-protocol=any --ignore-ssl-errors=true traffic-bot.js';
 
@@ -14,14 +15,18 @@ function runPretenders(command) {
         }
     });
 }
-setInterval(function () {
+
+
+for (let i = 0; i < 50; i += 1) {
     runPretenders(command);
-    console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter} >>     times;`);
-}, 1000);
+}
+
 setInterval(function () {
-    console.log(`---restart node process---`);
-    process.exit();
-}, 180 * 1000);
+    for (let i = 0; i < 45; i += 1) {
+        runPretenders(command);
+    }
+    console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
+}, 2.5 * 60 * 1000);
 //
 //
 // Функции смены IP:
