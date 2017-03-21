@@ -44,10 +44,11 @@ var INCLUDES = {
     , mouse = require("mouse").create(casper)
 
     , kindOfCrawling = [
-        'direct',
-        'referer',
-        'referer',
-        'referer'
+        'organicSearch'
+        //'direct',
+        //'referer',
+        //'referer',
+        //'referer'
     ]
     //
     // BOT INIT:
@@ -96,7 +97,7 @@ casper.waitForUrl(S.targetURL, function () {
     this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
 })
     .waitForSelector('body', function () {
-        console.log("=== Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());       
+        console.log("=== Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
         this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
         //this.capture('index.png');
     })

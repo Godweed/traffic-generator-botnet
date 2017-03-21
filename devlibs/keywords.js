@@ -1,4 +1,13 @@
 module.exports = [
-    'word1',
-    'word2'
+    'Insurance',
+    'Loans',
+    'Mortgage',
+    'Attorney',
+    'Credit',
+    'Lawyer',
+    'Donate',
+    'Degree',
+    'Hosting',
+    'Claim',
+    'Startups'
 ];
