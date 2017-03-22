@@ -17,16 +17,16 @@ function runPretenders(command) {
 }
 
 
-for (let i = 0; i < 50; i += 1) {
+for (let i = 0; i < cores * 10; i += 1) {
     runPretenders(command);
 }
 
 setInterval(function () {
-    for (let i = 0; i < 45; i += 1) {
+    for (let i = 0; i < cores * 10; i += 1) {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
-}, 2.5 * 60 * 1000);
+}, 3.5 * 60 * 1000);
 //
 //
 // Функции смены IP:

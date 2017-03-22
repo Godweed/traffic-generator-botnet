@@ -54,12 +54,12 @@ module.exports = function (self) {
       //
       // (2)=> Идём на внутренний раздел сайта через  @{sideBar}:
       // 
-      self.click(S.aside + ' ul li:nth-child(' + getRandomInt(1, 9) + ') a');
-     //self.wait(getRandomInt(3, 5) * 1000, function () { });
+      self.click(S.aside + ' a:nth-child(' + getRandomInt(1, 4) + ')');
+      //self.wait(getRandomInt(3, 5) * 1000, function () { });
       self.waitForSelector('body', function () {
             console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl());
       });
-      self.capture('articlePage.png');
+      //self.capture('articlePage.png');
       // Случайный даблклик
       //self.mouse.doubleclick(getRandomInt(100, 960), getRandomInt(10, 7000));
       self.wait(3 * 1000, function () { });

@@ -40,17 +40,15 @@ module.exports = function (self) {
       }
       //
       // 4) Футер
-      //
-      /*
+      // 
       for (var i = 0; i < 10; i += 1) {
             self.mouseEvent('mousemove', 'footer', getRandomInt(10, 90) + '%', getRandomInt(10, 90) + '%');
             self.wait(500, function () { });
       }
-      */
       //
       // (5)=> Идём на внутренний раздел сайта через  @{header}:
       //   
-      self.click(S.header + ' li:nth-child(' + getRandomInt(1, 5) + ') a');
+      self.click(S.header + ' a:nth-child(' + getRandomInt(2, 9) + ')');
       self.waitForSelector('body', function () {
             console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl());
       });

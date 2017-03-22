@@ -44,8 +44,13 @@ var INCLUDES = {
     , mouse = require("mouse").create(casper)
 
     , kindOfCrawling = [
-        'organicSearch'
+        'organicSearch',
+        'organicSearch',
+        'organicSearch',
+        'organicSearch',
+        'organicSearch',
         //'direct',
+        //'referer',
         //'referer',
         //'referer',
         //'referer'
@@ -161,7 +166,7 @@ casper.waitForUrl(S.targetURL, function () {
 //
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 function generateNewUserAgent() {
     return UA_storage[getRandomInt(0, UA_storage.length - 1)];
 }

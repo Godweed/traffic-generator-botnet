@@ -1,5 +1,5 @@
 (function () {
-    window.targetURL = 'http://kissof.ru/';
+    window.targetURL = 'http://web-dreamteam.com';
     window.D_O_M = {
         header: 'ul#primary-menu',
         aside: 'aside#secondary',

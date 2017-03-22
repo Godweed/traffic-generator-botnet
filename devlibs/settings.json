@@ -1,7 +1,7 @@
 {
-    "targetURL": "http://kissof.ru/",
-    "header": "ul#primary-menu",
-    "aside": "section#recent-posts-2",
-    "content": "main#main",
-    "logo": "h1.site-title a"
+    "targetURL": "http://web-dreamteam.com",
+    "header": "header",
+    "aside": "aside",
+    "content": "div#main-content",
+    "logo": "nav a.chlidren_1"
 }
