@@ -1,7 +1,7 @@
 {
-    "targetURL": "http://web-dreamteam.com",
-    "header": "header",
-    "aside": "aside",
-    "content": "div#main-content",
-    "logo": "nav a.chlidren_1"
+    "targetURL": "http://costonews.com/",
+    "header": "ul#primary-menu",
+    "aside": "section#recent-posts-2 ul",
+    "content": "main#main",
+    "logo": "h1.site-title a"
 }

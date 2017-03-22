@@ -1,8 +1,8 @@
 module.exports = function () {
       var searchEngines = [
-            // 'google',
-            // 'yahoo',
-            'bing',
+            // 'google','google','google','google','google','google',
+            // 'yahoo','yahoo','yahoo','yahoo',
+            'bing', 'bing', 'bing',
             'ask',
             'baidu',
             'aol'
@@ -121,7 +121,7 @@ module.exports = function () {
                                     document.querySelectorAll('.b_algo a')[1].setAttribute('href', window.targetURL);
                               });
                         })
-                        .then(function () {            
+                        .then(function () {
                               this.click('a[href="' + S.targetURL + '"]');
                         });
                   break;
@@ -173,7 +173,7 @@ module.exports = function () {
                         .then(function () {
                               this.fill('form[action="//search.aol.com/aol/search"]', { q: keywords[getRandomInt(0, keywords.length - 1)] }, true);
                         })
-                        .then(function () {                        
+                        .then(function () {
                               this.page.injectJs('devlibs/injectURL.js');
                               this.evaluate(function () {
                                     document.querySelectorAll('h3.hac a')[1].removeAttribute('href');

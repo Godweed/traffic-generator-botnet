@@ -6,7 +6,8 @@ var INCLUDES = {
     goFromOrganicSearch: require('./devlibs/phantomScripts/organicSearch.js'),
 
     PRETENDER_indexPage: require('./devlibs/phantomScripts/PRETENDER_indexPage.js'),
-    PRETENDER_articlePage: require('./devlibs/phantomScripts/PRETENDER_articlePage.js'),
+    PRETENDER_articlePageHeader: require('./devlibs/phantomScripts/PRETENDER_articlePageHeader.js'),
+    PRETENDER_articlePageAside: require('./devlibs/phantomScripts/PRETENDER_articlePageAside.js')
 }
     //
     // BOT SETTINGS:
@@ -49,11 +50,11 @@ var INCLUDES = {
         'organicSearch',
         'organicSearch',
         'organicSearch',
-        //'direct',
-        //'referer',
-        //'referer',
-        //'referer',
-        //'referer'
+        'direct',
+        'referer',
+        'referer',
+        'referer',
+        'referer'
     ]
     //
     // BOT INIT:
@@ -119,24 +120,38 @@ casper.waitForUrl(S.targetURL, function () {
         this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
-    /*
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-*/
+
     .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
-    /*
-     .then(function () {
-         this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-         this.wait(getRandomInt(10, 15) * 1000, function () { });
-     })
-    */
+
     .then(function () {
-        INCLUDES.PRETENDER_articlePage(this);
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
     })
+
+    .then(function () {
+        INCLUDES.PRETENDER_articlePageHeader(this);
+    })
+
+    .then(function () {
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
+    })
+
+    .then(function () {
+        INCLUDES.PRETENDER_articlePageAside(this);
+    })
+
+    .then(function () {
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
+    })
+
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
         this.wait(getRandomInt(2, 5) * 1000, function () { });
@@ -150,8 +165,33 @@ casper.waitForUrl(S.targetURL, function () {
     .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
+
     .then(function () {
-        INCLUDES.PRETENDER_articlePage(this);
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
+    })
+
+    .then(function () {
+        INCLUDES.PRETENDER_articlePageHeader(this);
+    })
+
+    .then(function () {
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
+    })
+
+    .then(function () {
+        INCLUDES.PRETENDER_articlePageAside(this);
+    })
+
+    .then(function () {
+        this.page.injectJs('devlibs/injectURL.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
+        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
+        this.wait(getRandomInt(10, 15) * 1000, function () { });
     })
     //
     //Bot start
