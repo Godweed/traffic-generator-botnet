@@ -6,14 +6,68 @@
         Взять из исходников ZOMBIE.JS - ведь там браузер.
 */
 (function () {
-    //
-    var oldNavigator = navigator;
-    var oldPlugins = oldNavigator.plugins;
-    var plugins = {};
-    plugins.length = 1;
-    plugins.__proto__ = oldPlugins.__proto__;
-    window.navigator = { plugins: plugins };
-    window.navigator.__proto__ = oldNavigator.__proto__;
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    // Plugins:
+    window.screen = {
+        width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900)
+    };
+    var fake_navigator = {};
+    for (var i in navigator) {
+        fake_navigator[i] = navigator[i];
+    }
+    var PluginArray = {
+        0: {
+            0: "MimeType",
+            description: "",
+            filename: "mhjfbmdgcfjbbpaeojofohoefgiehjai",
+            length: 1,
+            name: "Chrome PDF Viewer",
+            __proto__: 'Plugin'
+        },
+        1: {
+            0: "MimeType",
+            1: "MimeType",
+            description: "Shockwave Flash 25.0 r0",
+            filename: "libpepflashplayer.so",
+            length: 2,
+            name: "Shockwave Flash",
+            __proto__: 'Plugin'
+        },
+        2: {
+            0: "MimeType",
+            description: "Enables Widevine licenses for playback of HTML audio/video content. (version: 1.4.8.962)",
+            filename: "libwidevinecdmadapter.so",
+            length: 1,
+            name: "Widevine Content Decryption Module",
+            __proto__: 'Plugin'
+        },
+        3: {
+            0: "MimeType",
+            1: "MimeType",
+            description: "",
+            filename: "internal-nacl-plugin",
+            length: 2,
+            name: "Native Client",
+            __proto__: 'Plugin'
+        },
+        4: {
+            0: "MimeType",
+            description: "Portable Document Format",
+            filename: "internal-pdf-viewer",
+            length: 1,
+            name: "Chrome PDF Viewer",
+            __proto__: 'Plugin'
+        },
+        length: 5
+    };
+    fake_navigator.plugins = PluginArray;
+    fake_navigator.plugins.__proto__ = navigator.plugins.__proto__;
+    fake_navigator.__proto__ = navigator.plugins.__proto__;
+    fake_navigator.javaEnabled = function () { return true; };
+    fake_navigator.language = 'en-US';
+    window.navigator = fake_navigator;
     //
     Function.prototype.bind = function () {
         var func = this;
@@ -116,7 +170,6 @@
     }, 1000);
     //
 })();
-
 
 /*
 Window

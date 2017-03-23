@@ -22,11 +22,11 @@ for (let i = 0; i < cores * 12; i += 1) {
 }
 
 setInterval(function () {
-    for (let i = 0; i < cores * 20; i += 1) {
+    for (let i = 0; i < cores * 12; i += 1) {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
-}, 3 * 60 * 1000);
+}, 2 * 60 * 1000);
 //
 //
 // Функции смены IP:

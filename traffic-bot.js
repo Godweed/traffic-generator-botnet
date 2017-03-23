@@ -42,8 +42,6 @@ var INCLUDES = {
         verbose: true
     })
 
-    , mouse = require("mouse").create(casper)
-
     , kindOfCrawling = [
         'organicSearch',
         'organicSearch',
@@ -63,14 +61,9 @@ var INCLUDES = {
 console.log('< Botnet start by  {' + startStepChance + '} />');
 
 
-
-
-
 /*
             Шаг 1 - стартуем с..... 
 */
-
-
 
 
 if (startStepChance == 'organicSearch') {
@@ -89,25 +82,18 @@ if (startStepChance == 'organicSearch') {
 }
 
 
-
-
 /*
             Шаг 2 -  переход на наш сайт:
 */
 
 
-
-
 casper.waitForUrl(S.targetURL, function () {
     casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
-    this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
 })
     .waitForSelector('body', function () {
-        console.log("=== Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
-        this.page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
+        console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
         //this.capture('index.png');
     })
-
 
 
     /*
@@ -115,83 +101,24 @@ casper.waitForUrl(S.targetURL, function () {
     */
 
 
-
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-
     .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
-
-    .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-
     .then(function () {
         INCLUDES.PRETENDER_articlePageHeader(this);
     })
-
-    .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-
     .then(function () {
         INCLUDES.PRETENDER_articlePageAside(this);
     })
 
     .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
-        this.wait(getRandomInt(2, 5) * 1000, function () { });
-    })
-    /*
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })    
-    */
-    .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
-
-    .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-
     .then(function () {
         INCLUDES.PRETENDER_articlePageHeader(this);
     })
-
-    .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
-    })
-
     .then(function () {
         INCLUDES.PRETENDER_articlePageAside(this);
-    })
-
-    .then(function () {
-        this.page.injectJs('devlibs/injectURL.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend.js');
-        this.page.injectJs('devlibs/browserScripts/PRETENDER_homoSapiens__frontend_scroll.js');
-        this.wait(getRandomInt(10, 15) * 1000, function () { });
     })
     //
     //Bot start
@@ -200,9 +127,7 @@ casper.waitForUrl(S.targetURL, function () {
         console.log('</> CasperJS    *AdvertisingSerialManiac*   cum </>').exit();
     });
 //
-//
 // Utils function's:
-//
 //
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -210,3 +135,9 @@ function getRandomInt(min, max) {
 function generateNewUserAgent() {
     return UA_storage[getRandomInt(0, UA_storage.length - 1)];
 }
+//
+// Browser tuning:
+//
+casper.on('page.initialized', function (page) {
+    page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
+});
