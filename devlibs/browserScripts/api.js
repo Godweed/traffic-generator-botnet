@@ -1,9 +1,10 @@
 //
 window.D_O_M = {
     header: "ul#primary-menu",
+    logo: "h1.site-title a",
     aside: "section#recent-posts-2 ul",
     content: "main#main",
-    logo: "h1.site-title a"
+    footer: "footer.site-footer"
 };
 /**
  * Генерирует случайное число, неменее и не более указанных.
@@ -100,7 +101,27 @@ function easeInOut(currentTime, start, change, duration) {
  * @param  String   selector   A CSS3 selector to the element to click
  */
 function PRETENDER_mousemove(selector) {
-
+    var dispatchElement = document.querySelector(selector);
+    if (!dispatchElement) {
+        throw new Error('Не найден элемент для  <PRETENDER_mousemove>');
+    }
+    //PRETENDER_mouseEvent(type, selector, x, y)
+    var loop = getRandomInt(10, 20)
+        , minX = dispatchElement.offsetLeft
+        , maxX = dispatchElement.offsetLeft + dispatchElement.offsetWidth
+        , minY = dispatchElement.offsetTop
+        , maxY = dispatchElement.offsetTop + dispatchElement.offsetHeight;
+    scrollTo(document.body, dispatchElement.scrollHeight, 1500);
+    //
+    //
+    var dt = new Date();
+    while ((new Date()) - dt <= loop * 1000) {
+        console.log('Работаю')
+        PRETENDER_wait(1);
+        PRETENDER_mouseEvent('mousemove', selector, getRandomInt(minX, maxX), getRandomInt(minY, maxY));
+    }
+    //
+    //
 }
 /**
  * Копирует текст.

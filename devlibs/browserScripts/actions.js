@@ -1,15 +1,28 @@
+
 document.body.scrollTop = 0;
 
-PRETENDER_wait(getRandomInt(2, 5));
+//PRETENDER_wait(getRandomInt(2, 5));
 
-setTimeout(function () {
-    scrollTo(document.body, document.body.scrollHeight, 1500)
-}, 1000);
-setTimeout(function () {
-    scrollTo(document.body, 0, 1500)
-}, 5000);
+(function () {
+    setTimeout(function () {
+        scrollTo(document.body, document.body.scrollHeight, 1500)
+    }, 1000);
+    setTimeout(function () {
+        scrollTo(document.body, 0, 1500)
+    }, 5000);
+})();
 
-PRETENDER_wait(getRandomInt(3, 5));
+//PRETENDER_wait(getRandomInt(3, 5));
+
+(function () {
+    setTimeout(function () {
+        scrollTo(document.body, document.body.scrollHeight, 1500)
+    }, 1000);
+    setTimeout(function () {
+        scrollTo(document.body, 0, 1500)
+    }, 5000);
+})();
+
 /*
 В общем порядке, алгоритм един: 
     — получить объект узла DOM, на который будет вешаться событие;
@@ -39,14 +52,14 @@ $section.dispatchEvent(ConstructorMouseEvent);
 $IMG.dispatchEvent(ConstructorMouseEvent);
 $iframe.dispatchEvent(ConstructorMouseEvent);
 $p.dispatchEvent(ConstructorMouseEvent);
-
-
+ 
+ 
 ConstructorMouseEvent.initMouseEvent('click', true, true, window, 1, 500, getRandomInt(100, 5000), 300, getRandomInt(10, 500), false, false, true, false, 0, null);
 $section.dispatchEvent(ConstructorMouseEvent);
 $IMG.dispatchEvent(ConstructorMouseEvent);
 $iframe.dispatchEvent(ConstructorMouseEvent);
 $p.dispatchEvent(ConstructorMouseEvent);
-
+ 
 $div.dispatchEvent(ConstructorKeyEvent);
 $header.dispatchEvent(ConstructorKeyEvent);
 */
@@ -54,21 +67,33 @@ $header.dispatchEvent(ConstructorKeyEvent);
 //
 // 1) Хэдер
 //
+//PRETENDER_wait(getRandomInt(10, 15));
 PRETENDER_mousemove(D_O_M.header);
-PRETENDER_wait(getRandomInt(10, 15));
+PRETENDER_wait(getRandomInt(5, 10));
 //
 // 2) Контентная часть
 //   
-PRETENDER_mousemove(D_O_M.header);
-PRETENDER_wait(getRandomInt(10, 15));
+PRETENDER_mousemove(D_O_M.content);
+PRETENDER_wait(getRandomInt(5, 10));
 //
 // 3) СайдБар
 //
-PRETENDER_mousemove(D_O_M.header);
+PRETENDER_mousemove(D_O_M.aside);
 PRETENDER_wait(getRandomInt(5, 10));
 // Выделение текста с последующим копированием
-
 //
 // 4) Футер
 // 
-//PRETENDER_mousemove('footer');
+PRETENDER_mousemove(D_O_M.footer);
+PRETENDER_wait(getRandomInt(5, 10));
+
+(function () {
+    setTimeout(function () {
+        scrollTo(document.body, document.body.scrollHeight, 1500)
+    }, 1000);
+    setTimeout(function () {
+        scrollTo(document.body, 0, 1500)
+    }, 5000);
+})();
+
+//PRETENDER_wait(getRandomInt(5, 10));
