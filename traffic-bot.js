@@ -16,11 +16,12 @@ var INCLUDES = {
     , REF = require('./devlibs/referer.js')
     , UA_storage = require('./devlibs/UA_storage.js')
     , keywords = require('./devlibs/keywords.js')
-    , custom_cookie = require('./devlibs/cookie.js').google
+    , directs = require('./devlibs/direct.js')
+    , custom_cookie = require('./devlibs/cookie.js')
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
 
     , PRETENDER_headers = {
-        //"Cookie": custom_cookie,    
+        "Cookie": custom_cookie.string,
         'Accept-Language': 'en-US,en;q=0.9',
         "Cache-Control": "no-cache",
         "Origin": startRandomRefererWashingPoint,
@@ -78,7 +79,7 @@ if (startStepChance == 'organicSearch') {
     INCLUDES.goFromReferers();
 } else if (startStepChance == 'direct') {
     // ...прямого перехода
-    casper.start(S.targetURL).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
+    casper.start(directs[getRandomInt(0, directs.length - 1)]).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
 }
 
 

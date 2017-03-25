@@ -12,7 +12,9 @@
   $ apt-get install tor
   $ tor --hash-password mypassword
   $ nano /etc/tor/torrc
+```  
   >   (ControlPort 9051, HashedControlPassword ${ctrl+v you hashed password})
+```sh  
   $ /etc/init.d/tor restart
   
   $ apt-get install phantomjs
@@ -21,9 +23,18 @@
   $ git clone + npm i
 ```
   
+  
 # Before ever run:
+
+### Ubuntu
     $ export QT_QPA_PLATFORM=offscreen
     $ tor
     
     $ npm start
+
+### CentOS
+    $ unset QT_QPA_PLATFORM
+    $ tor
+    
+    $ npm start    
 ![N|Solid](https://pbs.twimg.com/profile_images/1884362265/phantomjs_400x400.png) 

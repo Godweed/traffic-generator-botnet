@@ -1,4 +1,8 @@
-module.exports = {
+var syntetic = {
+    string: '',
+    object: {}
+};
+const schemas = {
     MFA: {
         '_ga': 'GA1.2.451250355.1487406792',
         '_gat': 1,
@@ -43,4 +47,78 @@ module.exports = {
         'sb': '3-9SV14CygXcxmnBkMs7B0h0',
         'xs': '207%3AFb2RORTqVs3vUQ%3A2%3A1470798360%3A1623'
     }
+};
+//
+// Generate ancillary strings:
+//
+function generateCookieSubstring(kindOfSynteticAncillary, j) {
+    let returnedStr = '';
+    for (let i = 0; i < j; i += 1) {
+        returnedStr += kindOfSynteticAncillary[getRandomInt(0, kindOfSynteticAncillary.length - 1)];
+    }
+    return returnedStr;
+}
+function* generateSequence(start, end) {
+    for (let i = start; i <= end; i++) {
+        yield i;
+    }
+}
+function* generateAlphaNum() {
+    // 0..9
+    yield* generateSequence(48, 57);
+    // A..Z
+    yield* generateSequence(65, 90);
+    // a..z
+    yield* generateSequence(97, 122);
+}
+function* generateAlphaInteger() {
+    yield* generateSequence(48, 57);
+}
+function* generateAlphaLetters() {
+    yield* generateSequence(65, 90);
+    yield* generateSequence(97, 122);
+}
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+//
+// Create ancillary strings for cookies generate:
+//
+var synteticString = synteticIntegers = synteticLetters = '';
+for (let code of generateAlphaNum()) {
+    synteticString += String.fromCharCode(code);
+}
+for (let code of generateAlphaInteger()) {
+    synteticIntegers += String.fromCharCode(code);
+}
+for (let code of generateAlphaLetters()) {
+    synteticLetters += String.fromCharCode(code);
+}
+/*
+*
+*       Create cookies:
+*
+*/
+var createSynteticCookies = {
+    _ga: '',
+    PREF: ''
+};
+Object.defineProperty(createSynteticCookies, "_ga", {
+    get: function () {
+        return `GA1.2.${generateCookieSubstring(synteticIntegers, 9)}.${getRandomInt(11, 14)}${generateCookieSubstring(synteticIntegers, 8)}`;
+    }
+});
+Object.defineProperty(createSynteticCookies, "PREF", {
+    get: function () {
+        return `f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 2)}&al=en&f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 8)}`;
+    }
+});
+syntetic.string = createSynteticCookies._ga + ';_gat=1;' + createSynteticCookies.PREF;
+syntetic.string.trim();
+//  _ga=GA1.2.893481632.1490194106
+//  PREF: 'f5=30&al=en&f1=50000000'
+console.log(`СИНТЕТИЧЕСКИЕ COOKIE'S:   ${createSynteticCookies._ga} && ${createSynteticCookies.PREF}`)
+module.exports = {
+    string: syntetic.string,
+    object: syntetic.object
 };
