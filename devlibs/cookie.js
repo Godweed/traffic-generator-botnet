@@ -101,6 +101,7 @@ for (let code of generateAlphaLetters()) {
 */
 var createSynteticCookies = {
     _ga: '',
+    _ym_uid: '',
     PREF: ''
 };
 Object.defineProperty(createSynteticCookies, "_ga", {
@@ -108,17 +109,46 @@ Object.defineProperty(createSynteticCookies, "_ga", {
         return `GA1.2.${generateCookieSubstring(synteticIntegers, 9)}.${getRandomInt(11, 14)}${generateCookieSubstring(synteticIntegers, 8)}`;
     }
 });
+Object.defineProperty(createSynteticCookies, "_ym_uid", {
+    get: function () {
+        return `${generateCookieSubstring(synteticIntegers, 19)}`;
+    }
+});
 Object.defineProperty(createSynteticCookies, "PREF", {
     get: function () {
         return `f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 2)}&al=en&f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 8)}`;
     }
 });
-syntetic.string = createSynteticCookies._ga + ';_gat=1;' + createSynteticCookies.PREF;
+syntetic.string = '_ga=' + createSynteticCookies._ga + ';_gat=1;' + 'PREF=' + createSynteticCookies.PREF;
 syntetic.string.trim();
-//  _ga=GA1.2.893481632.1490194106
-//  PREF: 'f5=30&al=en&f1=50000000'
+//  _ga=GA1.2.893481632.1490194106;
+// _ym_uid=1490194106912865933;
+//  PREF: 'f5=30&al=en&f1=50000000';
 console.log(`СИНТЕТИЧЕСКИЕ COOKIE'S:   ${createSynteticCookies._ga} && ${createSynteticCookies.PREF}`)
 module.exports = {
     string: syntetic.string,
     object: syntetic.object
 };
+
+
+/*
+
+Cookie
+:yandexuid=3426669711482938701; 
+_ym_uid=148483563975200615;
+L=W1BSX10FUUJxfkMHfQMOXV1yUEFARgZyP1NXXQUban8=.1484840069.12901.345457.3c6db82bd57be7aeb78655632cdcd438; 
+mda=0;
+i=3WhMyEjvFk7YmmrSyo77xpNzfzQ0z3uRIHkcwqU5dA6NUadijTukwrS6TMOs+l5aYnWxaxF+EGpHw3MGZDRIQ7QpnuE=; 
+fuid01=58bb9c616443de94.Bvb8uR04cVlYKRXYbFwFXiEMXbwMl3txWmikWiXkM_D5wwaWQ0smjHPKH6VYvPjOpaEMFq4xdN4W9GsorxSRTHlQMc85SSecyMEuseY5SR8bAOygKWbgV6uKKlewnsjP; 
+yp=1798298701.yrts.1482938701#1800200069.udn.cDpsZWFsbGEwOQ%3D%3D#1504469511.szm.1:1680x1050:1615x936#1496466304.ww.1#1491589315.ygu.1;
+yandex_gid=213;
+Cookie_check=14904063720900.09132422491111525;
+Session_id=3:1490406373.5.0.1484840069644:EdyQXHO13g1bDyVQmCYCKg:1e.0|112147924.0.2|160754.668734.Xit2VWMRsG40XbqxRfwAHqPApHU; 
+sessionid2=3:1490406373.5.0.1484840069644:EdyQXHO13g1bDyVQmCYCKg:1e.1|112147924.0.2|160754.450081.HxEDO0vN04hA9-hNgXT32O7ozNY;
+yandex_login=lealla09;
+_ym_isad=2;
+yabs-sid=1234066081490406379;
+ys=ymrefl.16AFD3B1C5C53024;
+device_id="a5f990c361c74f0d5893b15e76b1ac0132d5fbfc1"
+
+*/

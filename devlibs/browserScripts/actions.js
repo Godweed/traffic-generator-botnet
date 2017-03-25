@@ -1,28 +1,10 @@
-
 document.body.scrollTop = 0;
-
-//PRETENDER_wait(getRandomInt(2, 5));
-
-(function () {
-    setTimeout(function () {
-        scrollTo(document.body, document.body.scrollHeight, 1500)
-    }, 1000);
-    setTimeout(function () {
-        scrollTo(document.body, 0, 1500)
-    }, 5000);
-})();
-
-//PRETENDER_wait(getRandomInt(3, 5));
-
-(function () {
-    setTimeout(function () {
-        scrollTo(document.body, document.body.scrollHeight, 1500)
-    }, 1000);
-    setTimeout(function () {
-        scrollTo(document.body, 0, 1500)
-    }, 5000);
-})();
-
+setTimeout(function () {
+    scrollTo(document.body, document.body.scrollHeight, 1500)
+}, 1000);
+setTimeout(function () {
+    scrollTo(document.body, 0, 1500)
+}, 5000);
 /*
 В общем порядке, алгоритм един: 
     — получить объект узла DOM, на который будет вешаться событие;
@@ -67,33 +49,38 @@ $header.dispatchEvent(ConstructorKeyEvent);
 //
 // 1) Хэдер
 //
-//PRETENDER_wait(getRandomInt(10, 15));
+PRETENDER_wait(getRandomInt(2, 4));
 PRETENDER_mousemove(D_O_M.header);
-PRETENDER_wait(getRandomInt(5, 10));
+PRETENDER_wait(getRandomInt(3, 6));
 //
 // 2) Контентная часть
 //   
 PRETENDER_mousemove(D_O_M.content);
-PRETENDER_wait(getRandomInt(5, 10));
 //
 // 3) СайдБар
 //
+PRETENDER_wait(getRandomInt(3, 6));
 PRETENDER_mousemove(D_O_M.aside);
-PRETENDER_wait(getRandomInt(5, 10));
-// Выделение текста с последующим копированием
+PRETENDER_wait(getRandomInt(3, 6));
 //
-// 4) Футер
+// 4) Выделение текста с последующим копированием
+// 
+
+//
+// 5) Футер
 // 
 PRETENDER_mousemove(D_O_M.footer);
-PRETENDER_wait(getRandomInt(5, 10));
-
+PRETENDER_wait(getRandomInt(2, 5));
+/*
 (function () {
-    setTimeout(function () {
-        scrollTo(document.body, document.body.scrollHeight, 1500)
-    }, 1000);
-    setTimeout(function () {
-        scrollTo(document.body, 0, 1500)
-    }, 5000);
+    return (function () {
+        setTimeout(function () {
+            scrollTo(document.body, 0, 1500)
+        }, 1000);
+        setTimeout(function () {
+            scrollTo(document.body, document.body.scrollHeight, 1500)
+        }, 5000);
+    })();
 })();
-
-//PRETENDER_wait(getRandomInt(5, 10));
+*/
+PRETENDER_wait(getRandomInt(2, 5));

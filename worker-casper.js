@@ -26,7 +26,7 @@ setInterval(function () {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
-}, 3 * 60 * 1000);
+}, 7 * 60000);
 //
 //
 // Функции смены IP:

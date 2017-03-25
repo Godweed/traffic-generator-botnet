@@ -17,11 +17,11 @@ var INCLUDES = {
     , UA_storage = require('./devlibs/UA_storage.js')
     , keywords = require('./devlibs/keywords.js')
     , directs = require('./devlibs/direct.js')
-    , custom_cookie = require('./devlibs/cookie.js')
+    //, custom_cookie = require('./devlibs/cookie.js')
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
 
     , PRETENDER_headers = {
-        "Cookie": custom_cookie.string,
+        //"Cookie": custom_cookie.string,
         'Accept-Language': 'en-US,en;q=0.9',
         "Cache-Control": "no-cache",
         "Origin": startRandomRefererWashingPoint,
@@ -31,8 +31,8 @@ var INCLUDES = {
     }
 
     , casper = require('casper').create({
-        waitTimeout: 80000,
-        stepTimeout: 80000,
+        waitTimeout: 90000,
+        stepTimeout: 90000,
         viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
         pageSettings: {
             customHeaders: PRETENDER_headers,
@@ -88,77 +88,56 @@ if (startStepChance == 'organicSearch') {
 */
 
 
-casper.waitForUrl(S.targetURL, function () {
+//.waitForUrl(S.targetURL, function () {})
+casper.waitForSelector('body', function () {
     casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
+    console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
+    //this.capture('index.png');
 })
-    .waitForSelector('body', function () {
-        console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
-        //this.capture('index.png');
-    })
 
 
     /*
                 Шаг 3 - Создаём активность:
     */
 
+
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
+        this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
     .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
+    .waitForSelector('body', function () { console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl()); })
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
+        this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
     .then(function () {
         INCLUDES.PRETENDER_articlePageHeader(this);
     })
+    .waitForSelector('body', function () { console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl()); })
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
+        this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
     .then(function () {
         INCLUDES.PRETENDER_articlePageAside(this);
     })
-
-
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
+        this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_indexPage(this);
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_articlePageHeader(this);
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(getRandomInt(2) * 1000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_articlePageAside(this);
     })
     //
-    //Bot start
+    // RUN BOT:
     //
     .run(function () {
         console.log('</> CasperJS    *AdvertisingSerialManiac*   cum </>').exit();

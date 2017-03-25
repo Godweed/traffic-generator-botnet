@@ -115,8 +115,7 @@ function PRETENDER_mousemove(selector) {
     //
     //
     var dt = new Date();
-    while ((new Date()) - dt <= loop * 1000) {
-        console.log('Работаю')
+    while ((new Date()) - dt <= loop * 1000) {      
         PRETENDER_wait(1);
         PRETENDER_mouseEvent('mousemove', selector, getRandomInt(minX, maxX), getRandomInt(minY, maxY));
     }
