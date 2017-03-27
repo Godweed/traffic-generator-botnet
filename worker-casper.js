@@ -3,7 +3,7 @@ var exec = require('child_process').exec
     , scheduleCounter = 0
     , cores = require('os').cpus().length;
 
-const command = 'casperjs --proxy-type=socks5 --proxy=127.0.0.1:9050 --ssl-protocol=any --ignore-ssl-errors=true traffic-bot.js';
+const command = 'casperjs --proxy-type=socks5 --proxy=127.0.0.1:9050 --ssl-protocol=any --ignore-ssl-errors=true --web-security=false traffic-bot.js';
 
 function runPretenders(command) {
     attemptRenewTorSession(function (e, msg) {
@@ -17,12 +17,12 @@ function runPretenders(command) {
 }
 
 
-for (let i = 0; i < cores * 10; i += 1) {
+for (let i = 0; i < cores * 20; i += 1) {
     runPretenders(command);
 }
 
 setInterval(function () {
-    for (let i = 0; i < cores * 10; i += 1) {
+    for (let i = 0; i < cores * 15; i += 1) {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);

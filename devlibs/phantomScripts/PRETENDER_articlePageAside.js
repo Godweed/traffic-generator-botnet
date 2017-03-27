@@ -1,7 +1,7 @@
 //
 // 0.0) Читаем статью:
 // 
-module.exports = function (self) {
+module.exports = function (self) {    
       //
       // Возвращаемся на главную
       //

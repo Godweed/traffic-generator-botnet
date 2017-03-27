@@ -88,7 +88,6 @@ if (startStepChance == 'organicSearch') {
 */
 
 
-//.waitForUrl(S.targetURL, function () {})
 casper.waitForSelector('body', function () {
     casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());

@@ -1,10 +1,7 @@
 document.body.scrollTop = 0;
-setTimeout(function () {
-    scrollTo(document.body, document.body.scrollHeight, 1500)
-}, 1000);
-setTimeout(function () {
-    scrollTo(document.body, 0, 1500)
-}, 5000);
+scrollTo(document.body, document.body.scrollHeight, 1250);
+PRETENDER_wait(getRandomInt(5, 7));
+scrollTo(document.body, 0, 1250);
 /*
 В общем порядке, алгоритм един: 
     — получить объект узла DOM, на который будет вешаться событие;
@@ -83,4 +80,3 @@ PRETENDER_wait(getRandomInt(2, 5));
     })();
 })();
 */
-PRETENDER_wait(getRandomInt(2, 5));
