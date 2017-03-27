@@ -3,6 +3,6 @@ module.exports = function (self) {
       self.sendKeys('body', 'c', { modifiers: 'ctrl' });
       //
       // ()=> Идём на внутренний раздел сайта через  @{header}:
-      //   
+      //      
       self.click(S.header + ' li:nth-child(' + getRandomInt(1, 5) + ') a');
 }

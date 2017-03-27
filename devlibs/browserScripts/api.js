@@ -37,23 +37,9 @@ function PRETENDER_wait(seconds) {
 function PRETENDER_mouseEvent(type, selector, x, y) {
     var elem = document.querySelector(selector);
     if (!elem) { console.warn('PRETENDER_mouseEvent dispatch element not found'); return; }
-    var convertNumberToIntAndPercentToFloat = function (a, def) {
-        return !!a && !isNaN(a) && parseInt(a, 10) ||
-            !!a && !isNaN(parseFloat(a)) && parseFloat(a) >= 0 &&
-            parseFloat(a) <= 100 && parseFloat(a) / 100 || def;
-    };
     try {
-        var evt = document.createEvent("MouseEvents"), px = convertNumberToIntAndPercentToFloat(x, 0.5), py = convertNumberToIntAndPercentToFloat(y, 0.5);
-        try {
-            var bounds = elem.getBoundingClientRect();
-            px = Math.floor(bounds.width * (px - (px ^ 0)).toFixed(10)) + (px ^ 0) + bounds.left;
-            py = Math.floor(bounds.height * (py - (py ^ 0)).toFixed(10)) + (py ^ 0) + bounds.top;
-        } catch (e) {
-            px = 1; py = 1;
-        }
-
+        var evt = document.createEvent("MouseEvents"), px = x, py = y;
         evt.initMouseEvent(type, true, true, window, 1, 1, 1, px, py, false, false, false, false, type !== "contextmenu" ? 0 : 2, elem);
-
         elem.dispatchEvent(evt);
         return true;
     } catch (e) {
@@ -144,9 +130,23 @@ function PRETENDER_mousemove(selector) {
         };
 
     scrollTo(document.body, dispatchElement.offsetTop, 2000);
+    PRETENDER_wait(3);
     //
     //
     var dt = new Date();
+    while ((new Date()) - dt <= loop * 1000) {
+        PRETENDER_wait(1);
+        foursquareMooving();
+    }
+    while ((new Date()) - dt <= loop * 1000) {
+        PRETENDER_wait(1);
+        foursquareMooving();
+    }
+    PRETENDER_wait(1);
+    while ((new Date()) - dt <= loop * 1000) {
+        PRETENDER_wait(1);
+        foursquareMooving();
+    }
     while ((new Date()) - dt <= loop * 1000) {
         PRETENDER_wait(1);
         foursquareMooving();
@@ -169,7 +169,6 @@ function PRETENDER_copytext() {
  * 
  * @param  -
  */
-/*
 function fraudADV() {
     var AdSenseINS = document.getElementsByClassName('adsbygoogle')
         , dispatchElement = AdSenseINS[getRandomInt(0, AdSenseINS.length - 1)]
@@ -177,42 +176,26 @@ function fraudADV() {
         , maxX = dispatchElement.offsetLeft + dispatchElement.offsetWidth
         , minY = dispatchElement.offsetTop
         , maxY = dispatchElement.offsetTop + dispatchElement.offsetHeight;
-    scrollTo(document.body, dispatchElement.offsetTop, 2000);
+    scrollTo(document.body, dispatchElement.offsetTop, 1300);
     PRETENDER_wait(1);
-    //
-    //
-    //
-    var convertNumberToIntAndPercentToFloat = function (a, def) {
-        return !!a && !isNaN(a) && parseInt(a, 10) ||
-            !!a && !isNaN(parseFloat(a)) && parseFloat(a) >= 0 &&
-            parseFloat(a) <= 100 && parseFloat(a) / 100 || def;
-    };
+    //console.log(' попытка клика по рекламе: ', AdSenseINS.length, dispatchElement);
     try {
-        var evt = document.createEvent("MouseEvents"), px = convertNumberToIntAndPercentToFloat(getRandomInt(minX, maxX), 0.5), py = convertNumberToIntAndPercentToFloat(getRandomInt(minY, maxY), 0.5);
-        try {
-            var bounds = dispatchElement.getBoundingClientRect();
-            px = Math.floor(bounds.width * (px - (px ^ 0)).toFixed(10)) + (px ^ 0) + bounds.left;
-            py = Math.floor(bounds.height * (py - (py ^ 0)).toFixed(10)) + (py ^ 0) + bounds.top;
-        } catch (e) {
-            px = 1; py = 1;
-        }
+        var evt = document.createEvent("MouseEvents"), px = getRandomInt(minX, maxX), py = getRandomInt(minY, maxY);
         evt.initMouseEvent('mousemove', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, dispatchElement);
         dispatchElement.dispatchEvent(evt);
-
-        //var frame=document.getElementsByClassName('img_ad');
-        var iframe = dispatchElement.childNodes[0].childNodes[0].childNodes[0]//.contentWindow.document.getElementsByTagName('iframe')[1].getElementsByClassName('img_ad');
+        //
+        //     
+        var iframe = dispatchElement.childNodes[0].childNodes[0].childNodes[0];
         var iframeContentWindow = iframe.contentWindow.document.getElementsByTagName('iframe')[1] || iframe.contentWindow.document.getElementsByTagName('iframe')[0];
-        var clickFraudTarget = iframeContentWindow.contentWindow.document.getElementById("aw0");
-        //clickFraudTarget.click();
-        evt.initMouseEvent('click', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, clickFraudTarget);
-        clickFraudTarget.dispatchEvent(evt);
+        var clickFraudTarget = iframeContentWindow.contentWindow.document.getElementsByTagName('a');
+        clickFraudTarget[0].click();
+        console.log('(!!!)==>>  Делаю попытку клика по рекламе: ', clickFraudTarget[0].getAttribute('href'));
+        PRETENDER_wait(10);
+        //
+        //      
         return true;
     } catch (e) {
         console.warn("Failed dispatching <mousemove> mouse event on ins: " + e, "error");
         return false;
     }
-    //
-    //
-    //
 }
-*/

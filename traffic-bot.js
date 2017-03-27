@@ -7,7 +7,9 @@ var INCLUDES = {
 
     PRETENDER_indexPage: require('./devlibs/phantomScripts/PRETENDER_indexPage.js'),
     PRETENDER_articlePageHeader: require('./devlibs/phantomScripts/PRETENDER_articlePageHeader.js'),
-    PRETENDER_articlePageAside: require('./devlibs/phantomScripts/PRETENDER_articlePageAside.js')
+    PRETENDER_articlePageAside: require('./devlibs/phantomScripts/PRETENDER_articlePageAside.js'),
+
+    clickFraud: require('./devlibs/phantomScripts/clickFraud.js')
 }
     //
     // BOT SETTINGS:
@@ -59,6 +61,7 @@ var INCLUDES = {
     // BOT INIT:
     //
     , startStepChance = kindOfCrawling[getRandomInt(0, kindOfCrawling.length - 1)];
+
 console.log('< Botnet start by  {' + startStepChance + '} />');
 
 
@@ -88,7 +91,7 @@ if (startStepChance == 'organicSearch') {
 */
 
 
-casper.waitForSelector('body', function () {
+casper.waitForSelector('ins.adsbygoogle', function () {
     casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
     //this.capture('index.png');
@@ -103,6 +106,9 @@ casper.waitForSelector('body', function () {
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
         this.wait(2000, function () { });
+        //
+        INCLUDES.clickFraud(this);
+        //
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
@@ -156,3 +162,6 @@ function generateNewUserAgent() {
 casper.on('page.initialized', function (page) {
     page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
 });
+casper.page.onConsoleMessage = function (msg, lineNum, sourceId) {
+    console.log('КОНСОЛЬ ЛОГ: ' + msg);
+};     
