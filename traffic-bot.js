@@ -105,10 +105,7 @@ casper.waitForSelector('ins.adsbygoogle', function () {
 
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });
-        //
-        INCLUDES.clickFraud(this);
-        //
+        this.wait(2000, function () { });       
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
@@ -139,6 +136,9 @@ casper.waitForSelector('ins.adsbygoogle', function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
         this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
+        //
+        //INCLUDES.clickFraud(this);
+        //
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
     //

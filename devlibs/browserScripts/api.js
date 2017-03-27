@@ -165,11 +165,12 @@ function PRETENDER_copytext() {
 }
 /**
  * Кликает по рекламе.
- * 
+ * Придётся копировать содержимое функции - ибо каспер вместо true/false: return null
  * 
  * @param  -
  */
 function fraudADV() {
+    //
     var AdSenseINS = document.getElementsByClassName('adsbygoogle')
         , dispatchElement = AdSenseINS[getRandomInt(0, AdSenseINS.length - 1)]
         , minX = dispatchElement.offsetLeft
@@ -178,12 +179,10 @@ function fraudADV() {
         , maxY = dispatchElement.offsetTop + dispatchElement.offsetHeight;
     scrollTo(document.body, dispatchElement.offsetTop, 1300);
     PRETENDER_wait(1);
-    //console.log(' попытка клика по рекламе: ', AdSenseINS.length, dispatchElement);
     try {
         var evt = document.createEvent("MouseEvents"), px = getRandomInt(minX, maxX), py = getRandomInt(minY, maxY);
         evt.initMouseEvent('mousemove', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, dispatchElement);
         dispatchElement.dispatchEvent(evt);
-        //
         //     
         var iframe = dispatchElement.childNodes[0].childNodes[0].childNodes[0];
         var iframeContentWindow = iframe.contentWindow.document.getElementsByTagName('iframe')[1] || iframe.contentWindow.document.getElementsByTagName('iframe')[0];
@@ -191,11 +190,11 @@ function fraudADV() {
         clickFraudTarget[0].click();
         console.log('(!!!)==>>  Делаю попытку клика по рекламе: ', clickFraudTarget[0].getAttribute('href'));
         PRETENDER_wait(10);
-        //
         //      
         return true;
     } catch (e) {
         console.warn("Failed dispatching <mousemove> mouse event on ins: " + e, "error");
         return false;
     }
+    //
 }
