@@ -13,9 +13,7 @@ window.D_O_M = {
  * @param  {Number} max         максимальная величина
  * @return   {Number}
  */
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 /**
  * "Ждёт" - бездействует указанное количество секунд (блокирует EventLoop)
  * 
@@ -128,29 +126,29 @@ function PRETENDER_mousemove(selector) {
                 'mousemove', selector, getRandomInt(sqr.minX, sqr.maxX), getRandomInt(sqr.minY, sqr.maxY)
             );
         };
-
     scrollTo(document.body, dispatchElement.offsetTop, 2000);
-    PRETENDER_wait(3);
     //
     //
-    var dt = new Date();
-    while ((new Date()) - dt <= loop * 1000) {
+    setTimeout(function () {
+        var dt = new Date();
+        while ((new Date()) - dt <= loop * 1000) {
+            PRETENDER_wait(1);
+            foursquareMooving();
+        }
+        while ((new Date()) - dt <= loop * 1000) {
+            PRETENDER_wait(1);
+            foursquareMooving();
+        }
         PRETENDER_wait(1);
-        foursquareMooving();
-    }
-    while ((new Date()) - dt <= loop * 1000) {
-        PRETENDER_wait(1);
-        foursquareMooving();
-    }
-    PRETENDER_wait(1);
-    while ((new Date()) - dt <= loop * 1000) {
-        PRETENDER_wait(1);
-        foursquareMooving();
-    }
-    while ((new Date()) - dt <= loop * 1000) {
-        PRETENDER_wait(1);
-        foursquareMooving();
-    }
+        while ((new Date()) - dt <= loop * 1000) {
+            PRETENDER_wait(1);
+            foursquareMooving();
+        }
+        while ((new Date()) - dt <= loop * 1000) {
+            PRETENDER_wait(1);
+            foursquareMooving();
+        }
+    }, 3000);
     //
     //
 }
@@ -178,7 +176,6 @@ function fraudADV() {
         , minY = dispatchElement.offsetTop
         , maxY = dispatchElement.offsetTop + dispatchElement.offsetHeight;
     scrollTo(document.body, dispatchElement.offsetTop, 1300);
-    PRETENDER_wait(1);
     try {
         var evt = document.createEvent("MouseEvents"), px = getRandomInt(minX, maxX), py = getRandomInt(minY, maxY);
         evt.initMouseEvent('mousemove', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, dispatchElement);

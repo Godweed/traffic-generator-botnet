@@ -95,6 +95,8 @@ casper.waitForSelector('ins.adsbygoogle', function () {
     casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
     //this.capture('index.png');
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
 })
 
 
@@ -105,32 +107,56 @@ casper.waitForSelector('ins.adsbygoogle', function () {
 
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });       
+        this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
+    })
+    .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
     })
     .then(function () {
         INCLUDES.PRETENDER_indexPage(this);
     })
     .waitForSelector('body', function () { console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl()); })
     .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
+    })
+    .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
         this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
+    })
+    .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
     })
     .then(function () {
         INCLUDES.PRETENDER_articlePageHeader(this);
     })
     .waitForSelector('body', function () { console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl()); })
     .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
+    })
+    .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
         this.wait(2000, function () { });
         this.page.injectJs('devlibs/browserScripts/actions.js');
         this.wait(getRandomInt(5, 10) * 1000, function () { });
     })
     .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
+    })
+    .then(function () {
         INCLUDES.PRETENDER_articlePageAside(this);
+    })
+    .then(function () {
+        this.page.injectJs('devlibs/browserScripts/scroll.js');
+        this.wait(getRandomInt(3, 6) * 1000, function () { });
     })
     .then(function () {
         this.page.injectJs('devlibs/browserScripts/api.js');
