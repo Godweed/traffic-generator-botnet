@@ -8,8 +8,8 @@ setTimeout(function () {
 
 setTimeout(function () {
       scrollTo(document.body, 0, getRandomInt(1000, 1500));
-}, step * 1.4);
-
+}, 4500);
+/*
 setTimeout(function () {
       scrollTo(document.body, ins[0].scrollHeight, getRandomInt(1000, 1500));
 }, step + step);
@@ -21,6 +21,7 @@ try {
             scrollTo(document.body, ins[2].scrollHeight, getRandomInt(1000, 1500));
       }, step * 4);
 } catch (error) { }
+*/
 //
 //
 //

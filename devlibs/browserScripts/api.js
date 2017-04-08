@@ -1,10 +1,10 @@
 //
 window.D_O_M = {
-    header: "ul#primary-menu",
-    logo: "h1.site-title a",
-    aside: "section#recent-posts-2 ul",
-    content: "main#main",
-    footer: "footer.site-footer"
+    header: "header nav",
+    logo: "header nav a.chlidren_1",
+    aside: "aside",
+    content: "#main-content",
+    footer: "footer"
 };
 /**
  * Генерирует случайное число, неменее и не более указанных.

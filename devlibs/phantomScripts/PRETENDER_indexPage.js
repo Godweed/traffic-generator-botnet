@@ -4,5 +4,5 @@ module.exports = function (self) {
       //
       // ()=> Идём на внутренний раздел сайта через  @{header}:
       //      
-      self.click(S.header + ' li:nth-child(' + getRandomInt(1, 5) + ') a');
+      self.click(S.header + ' a:nth-child(' + getRandomInt(1, 12) + ')');
 }

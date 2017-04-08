@@ -5,5 +5,5 @@ module.exports = function (self) {
       //
       // ()=> Идём на внутренний раздел сайта через  @{sideBar}:
       // 
-      self.click(S.aside + ' li:nth-child(' + getRandomInt(1, 9) + ') a');
+      self.click(S.aside + ' a:nth-child(' + getRandomInt(1, 4) + ')');
 }

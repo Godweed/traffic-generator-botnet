@@ -1,3 +1,3 @@
 (function () {
-    window.targetURL = 'http://costonews.com/';    
+    window.targetURL = 'http://web-dreamteam.com/';
 })();

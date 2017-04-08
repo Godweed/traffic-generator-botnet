@@ -9,6 +9,7 @@ var INCLUDES = {
     PRETENDER_articlePageHeader: require('./devlibs/phantomScripts/PRETENDER_articlePageHeader.js'),
     PRETENDER_articlePageAside: require('./devlibs/phantomScripts/PRETENDER_articlePageAside.js'),
 
+    objectiveTuning: require('./devlibs/phantomScripts/botBrowserPatches.js'),
     clickFraud: require('./devlibs/phantomScripts/clickFraud.js')
 }
     //
@@ -19,11 +20,9 @@ var INCLUDES = {
     , UA_storage = require('./devlibs/UA_storage.js')
     , keywords = require('./devlibs/keywords.js')
     , directs = require('./devlibs/direct.js')
-    //, custom_cookie = require('./devlibs/cookie.js')
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
 
     , PRETENDER_headers = {
-        //"Cookie": custom_cookie.string,
         'Accept-Language': 'en-US,en;q=0.9',
         "Cache-Control": "no-cache",
         "Origin": startRandomRefererWashingPoint,
@@ -46,22 +45,24 @@ var INCLUDES = {
     })
 
     , kindOfCrawling = [
+        /*'organicSearch',
         'organicSearch',
         'organicSearch',
         'organicSearch',
-        'organicSearch',
-        'organicSearch',
-        'direct',
+        'organicSearch',*/
+        'direct'
+        /*'referer',
         'referer',
         'referer',
-        'referer',
-        'referer'
+        'referer'*/
     ]
     //
     // BOT INIT:
     //
-    , startStepChance = kindOfCrawling[getRandomInt(0, kindOfCrawling.length - 1)];
-
+    , startStepChance = kindOfCrawling[getRandomInt(0, kindOfCrawling.length - 1)]
+    , CTR = getRandomInt(1, 100);
+// W&D objects    
+INCLUDES.objectiveTuning(casper);
 console.log('< Botnet start by  {' + startStepChance + '} />');
 
 
@@ -82,7 +83,7 @@ if (startStepChance == 'organicSearch') {
     INCLUDES.goFromReferers();
 } else if (startStepChance == 'direct') {
     // ...прямого перехода
-    casper.start(directs[getRandomInt(0, directs.length - 1)]).viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
+    casper.start(directs[getRandomInt(0, directs.length - 1)]);
 }
 
 
@@ -91,88 +92,84 @@ if (startStepChance == 'organicSearch') {
 */
 
 
-casper.waitForSelector('ins.adsbygoogle', function () {
-    casper.viewport(getRandomInt(1024, 2200), getRandomInt(768, 1900)).userAgent(generateNewUserAgent());
+casper.waitForSelector('body', function () {
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
     //this.capture('index.png');
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
-})
+});
 
 
-    /*
-                Шаг 3 - Создаём активность:
-    */
+/*
+            Шаг 3 - Создаём активность:
+*/
+//INCLUDES.clickFraud(casper).directadvert();
 
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/api.js');
+    this.wait(2000, function () { });
+    this.page.injectJs('devlibs/browserScripts/actions.js');
+    this.wait(getRandomInt(5, 10) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    INCLUDES.PRETENDER_indexPage(this);
+}).waitForSelector('body', function () { console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl()); });
 
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_indexPage(this);
-    })
-    .waitForSelector('body', function () { console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl()); })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_articlePageHeader(this);
-    })
-    .waitForSelector('body', function () { console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl()); })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        INCLUDES.PRETENDER_articlePageAside(this);
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/scroll.js');
-        this.wait(getRandomInt(3, 6) * 1000, function () { });
-    })
-    .then(function () {
-        this.page.injectJs('devlibs/browserScripts/api.js');
-        this.wait(2000, function () { });
-        this.page.injectJs('devlibs/browserScripts/actions.js');
-        //
-        //INCLUDES.clickFraud(this);
-        //
-        this.wait(getRandomInt(5, 10) * 1000, function () { });
-    })
-    //
-    // RUN BOT:
-    //
-    .run(function () {
-        console.log('</> CasperJS    *AdvertisingSerialManiac*   cum </>').exit();
-    });
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/api.js');
+    this.wait(2000, function () { });
+    this.page.injectJs('devlibs/browserScripts/actions.js');
+    this.wait(getRandomInt(5, 10) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    INCLUDES.PRETENDER_articlePageHeader(this);
+}).waitForSelector('body', function () { console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl()); });
+
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/api.js');
+    this.wait(2000, function () { });
+    this.page.injectJs('devlibs/browserScripts/actions.js');
+    this.wait(getRandomInt(5, 10) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    INCLUDES.PRETENDER_articlePageAside(this);
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/scroll.js');
+    this.wait(getRandomInt(3, 6) * 1000, function () { });
+});
+casper.then(function () {
+    this.page.injectJs('devlibs/browserScripts/api.js');
+    this.wait(2000, function () { });
+    this.page.injectJs('devlibs/browserScripts/actions.js');
+    this.wait(getRandomInt(5, 10) * 1000, function () { });
+});
+//
+// RUN BOT:
+//
+casper.run(function () {
+    console.log('</> CasperJS    *AdvertisingSerialManiac*   cum </>').exit();
+});
 //
 // Utils function's:
 //
@@ -182,12 +179,6 @@ function getRandomInt(min, max) {
 function generateNewUserAgent() {
     return UA_storage[getRandomInt(0, UA_storage.length - 1)];
 }
-//
-// Browser tuning:
-//
-casper.on('page.initialized', function (page) {
-    page.injectJs('devlibs/browserScripts/botBrowserPatches.js');
-});
 casper.page.onConsoleMessage = function (msg, lineNum, sourceId) {
     console.log('КОНСОЛЬ ЛОГ: ' + msg);
-};     
+};
