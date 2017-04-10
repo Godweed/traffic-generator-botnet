@@ -22,13 +22,12 @@ var INCLUDES = {
     , directs = require('./devlibs/direct.js')
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
 
-    , PRETENDER_headers = {
-        'Accept-Language': 'en-US,en;q=0.9',
+    , PRETENDER_headers = {       
         "Cache-Control": "no-cache",
         "Origin": startRandomRefererWashingPoint,
         'Referer': startRandomRefererWashingPoint,
         'X-Forwarded-For': startRandomRefererWashingPoint,
-        "User-Agent": generateNewUserAgent()
+       // "User-Agent": generateNewUserAgent()
     }
 
     , casper = require('casper').create({

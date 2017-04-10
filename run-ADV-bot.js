@@ -12,8 +12,7 @@ for (var i = 0; i < numWorkers; i++) {
 *       BrowserifyObjectiv:
 */
 http.createServer((request, response) => {
-    let browser = require('./devlibs/factory_of_faith.js');
-    console.log(`request  `, typeof browser);
+    let browser = require('./devlibs/factory_of_faith.js'); 
     response.writeHead(200, {
         'Access-Control-Allow-Origin': '*',
         // 'Connection': 'Keep-Alive;charset=utf-8',
