@@ -1,18 +1,15 @@
 "use strict;"
 const http = require('http'), cluster = require('cluster'), numWorkers = require('os').cpus().length;
-/*
+
 cluster.setupMaster({
     exec: "worker-casper.js"
 });
 for (var i = 0; i < numWorkers; i++) {
     cluster.fork();
 }
-*/
-/*
-*       BrowserifyObjectiv:
-*/
+
 http.createServer((request, response) => {
-    let browser = require('./devlibs/factory_of_faith.js'); 
+    let browser = require('./devlibs/factory_of_faith.js');
     response.writeHead(200, {
         'Access-Control-Allow-Origin': '*',
         // 'Connection': 'Keep-Alive;charset=utf-8',

@@ -22,12 +22,12 @@ var INCLUDES = {
     , directs = require('./devlibs/direct.js')
     , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
 
-    , PRETENDER_headers = {       
+    , PRETENDER_headers = {
         "Cache-Control": "no-cache",
         "Origin": startRandomRefererWashingPoint,
         'Referer': startRandomRefererWashingPoint,
         'X-Forwarded-For': startRandomRefererWashingPoint,
-       // "User-Agent": generateNewUserAgent()
+        // "User-Agent": generateNewUserAgent()
     }
 
     , casper = require('casper').create({
@@ -44,16 +44,16 @@ var INCLUDES = {
     })
 
     , kindOfCrawling = [
-        /*'organicSearch',
         'organicSearch',
         'organicSearch',
         'organicSearch',
-        'organicSearch',*/
-        'direct'
-        /*'referer',
+        'organicSearch',
+        'organicSearch',
+        'direct',
         'referer',
         'referer',
-        'referer'*/
+        'referer',
+        'referer'
     ]
     //
     // BOT INIT:

@@ -17,7 +17,7 @@ class Chrome {
                         pending: false,
                         speaking: false,
                         paused: false,
-                        onvoiceschanged: {},
+                        onvoiceschanged: 'function onvoiceschanged() { [native code] }',
                         speak: 'function speak() { [native code] }',
                         cancel: 'function cancel() { [native code] }',
                         pause: 'function pause() { [native code] }',
@@ -34,127 +34,107 @@ class Chrome {
                         delete: 'function delete() { [native code] }',
                         keys: 'function keys() { [native code] }'
                   },
-                  stop: {},
-                  open: {},
-                  alert: {},
-                  confirm: {},
-                  prompt: {},
-                  print: {},
-                  requestAnimationFrame: {},
-                  cancelAnimationFrame: {},
-                  requestIdleCallback: {},
-                  cancelIdleCallback: {},
-                  captureEvents: {},
-                  releaseEvents: {},
-                  getComputedStyle: {},
-                  matchMedia: {},
-                  moveTo: {},
-                  moveBy: {},
-                  resizeTo: {},
-                  resizeBy: {},
-                  getSelection: {},
-                  find: {},
-                  getMatchedCSSRules: {},
-                  webkitRequestAnimationFrame: {},
-                  webkitCancelAnimationFrame: {},
-                  webkitCancelRequestAnimationFrame: {},
-                  btoa: {},
-                  atob: {},
-                  setTimeout: {},
-                  clearTimeout: {},
-                  localStorage: {},
-                  sessionStorage: {},
-                  webkitStorageInfo:
-                  {
+                  stop: 'function stop() { [native code] }',
+                  open: 'function open() { [native code] }',
+                  alert: 'function alert() { [native code] }',
+                  confirm: 'function confirm() { [native code] }',
+                  prompt: 'function prompt() { [native code] }',
+                  print: 'function print() { [native code] }',
+                  requestAnimationFrame: 'function requestAnimationFrame() { [native code] }',
+                  cancelAnimationFrame: 'function cancelAnimationFrame() { [native code] }',
+                  requestIdleCallback: 'function requestIdleCallback() { [native code] }',
+                  cancelIdleCallback: 'function cancelIdleCallback() { [native code] }',
+                  captureEvents: 'function captureEvents() { [native code] }',
+                  releaseEvents: 'function releaseEvents() { [native code] }',
+                  getComputedStyle: 'function getComputedStyle() { [native code] }',
+                  matchMedia: 'function matchMedia() { [native code] }',
+                  moveTo: 'function moveTo() { [native code] }',
+                  moveBy: 'function moveBy() { [native code] }',
+                  resizeTo: 'function resizeTo() { [native code] }',
+                  resizeBy: 'function resizeBy() { [native code] }',
+                  getSelection: 'function getSelection() { [native code] }',
+                  find: 'function find() { [native code] }',
+                  getMatchedCSSRules: 'function getMatchedCSSRules() { [native code] }',
+                  webkitRequestAnimationFrame: 'function webkitRequestAnimationFrame() { [native code] }',
+                  webkitCancelAnimationFrame: 'function webkitCancelAnimationFrame() { [native code] }',
+                  webkitCancelRequestAnimationFrame: 'function webkitCancelRequestAnimationFrame() { [native code] }',
+                  btoa: 'function btoa() { [native code] }',
+                  atob: 'function atob() { [native code] }',
+                  setTimeout: 'function setTimeout() { [native code] }',
+                  clearTimeout: 'function clearTimeout() { [native code] }',
+                  setInterval: 'function setInterval() { [native code] }',
+                  postMessage: 'function () { [native code] }',
+                  blur: 'function () { [native code] }',
+                  clearInterval: 'function clearInterval() { [native code] }',
+                  focus: 'function () { [native code] }',
+                  close: 'function () { [native code] }',
+                  createImageBitmap: 'function createImageBitmap() { [native code] }',
+                  scroll: 'function scroll() { [native code] }',
+                  scrollTo: 'function scrollTo() { [native code] }',
+                  scrollBy: 'function scrollBy() { [native code] }',
+                  fetch: 'function fetch() { [native code] }',
+                  webkitRequestFileSystem: 'function webkitRequestFileSystem() { [native code] }',
+                  webkitResolveLocalFileSystemURL: 'function webkitResolveLocalFileSystemURL() { [native code] }',
+                  openDatabase: 'function openDatabase() { [native code] }',
+                  localStorage: { "LH::tab-s-Y3brWLO1OIXL6AT1zIW4DQ-dt-1": "\"&ei=Y3brWLO1OIXL6AT1zIW4DQ&m=HV&t=C&s=1&v=2&pv=0.009852423430491974&me=1:1491826277035,x:1,V,0,0,1855,966:0,N,1,Y3brWLO1OIXL6AT1zIW4DQ:0,R,1,3,13,56,120,15:0,R,1,28,166,223,600,93:0,R,1,34,166,342,600,75:0,R,1,40,166,443,600,75:0,R,1,47,166,544,600,93:0,R,1,53,166,677,600,154:0,R,1,71,166,871,600,93:0,R,1,119,820,175,424,220:0,R,1,120,822,175,454,37:0,R,1,122,822,212,454,88:0,R,1,126,822,300,454,88:2,B,1907:1627,c,253,96:2,e,C\"", "LH::tab-s-jLTsWM-OFsrL6ASomobgDA-dt-2": "\"&ei=jLTsWM-OFsrL6ASomobgDA&s=2&v=2&pv=0.46126234375900843&me=35:1491907730739,V,0,0,0,0:466557,e,U\"", "LH::tabs": "{\"s-Y3brWLO1OIXL6AT1zIW4DQ\":true,\"s-cansWP_PG8yLsAHKsYGoCA\":true,\"s-jLTsWM-OFsrL6ASomobgDA\":true}", "LH::tabs-md-s-Y3brWLO1OIXL6AT1zIW4DQ": "{\"tabId\":\"s-Y3brWLO1OIXL6AT1zIW4DQ\",\"lastSent\":0,\"savedIndex\":1,\"lastTS\":1491826278667,\"uid\":\"75172e2d\"}", "LH::tabs-md-s-cansWP_PG8yLsAHKsYGoCA": "{\"tabId\":\"s-cansWP_PG8yLsAHKsYGoCA\",\"lastSent\":3,\"savedIndex\":3,\"lastTS\":1491904965812,\"uid\":\"c9c918f0\"}", "LH::tabs-md-s-jLTsWM-OFsrL6ASomobgDA": "{\"tabId\":\"s-jLTsWM-OFsrL6ASomobgDA\",\"lastSent\":1,\"savedIndex\":2,\"lastTS\":1491908197302,\"uid\":\"c9c918f0\"}", "cdids": "", "doodle-vday17-nve": "false", "lv": "1491900879238", "og-up-19001444_upccb": "20", "og-up-19001922_upccb": "44", "tup": "!13i1490248652641!18b1!19b0!20b1!23s20170405.0!25b1", "udla::backoff": "\"86400000\"", "udla::last-ei": "[\"8GrkWNHqCavB6AS875iQAw\",\"OgfmWOW7PITyUqmemJgJ\",\"8z7rWJvlA6j06ATPuLyoDQ\"]", "udla::last-rej": "\"1482982880768\"" },
+                  sessionStorage: { "_c;;i": "p:*|l:9007199254740991_0" },
+                  webkitStorageInfo: {
                         TEMPORARY: 0,
                         PERSISTENT: 1,
                         queryUsageAndQuota: 'function queryUsageAndQuota() { [native code] }',
                         requestQuota: 'function requestQuota() { [native code] }'
                   },
-                  setInterval: {},
-                  clearInterval: {},
-                  createImageBitmap: {},
-                  scroll: {},
-                  scrollTo: {},
-                  indexedDB:
-                  {
+                  indexedDB: {
                         webkitGetDatabaseNames: 'function webkitGetDatabaseNames() { [native code] }',
                         open: 'function open() { [native code] }',
                         deleteDatabase: 'function deleteDatabase() { [native code] }',
                         cmp: 'function cmp() { [native code] }'
                   },
-                  scrollBy: {},
-                  webkitIndexedDB:
-                  {
+                  webkitIndexedDB: {
                         webkitGetDatabaseNames: 'function webkitGetDatabaseNames() { [native code] }',
                         open: 'function open() { [native code] }',
                         deleteDatabase: 'function deleteDatabase() { [native code] }',
                         cmp: 'function cmp() { [native code] }'
                   },
-                  ondeviceorientationabsolute: {},
-                  ondeviceorientation: {},
-                  fetch: {},
-                  ondevicemotion: {},
-                  crypto:
-                  {
+                  ondevicemotion: 'function ondevicemotion() { [native code] }',
+                  crypto: {
                         subtle: {},
                         getRandomValues: 'function getRandomValues() { [native code] }'
                   },
-                  webkitRequestFileSystem: {},
-                  postMessage: {},
-                  webkitResolveLocalFileSystemURL: {},
-                  blur: {},
-                  focus: {},
-                  openDatabase: {},
-                  close: {},
-                  onpointerup: {},
-                  onpointerover: {},
-                  onpointerout: {},
-                  onpointermove: {},
-                  onpointerleave: {},
-                  onpointerenter: {},
-                  onpointerdown: {},
-                  onpointercancel: {},
-                  chrome:
-                  {
+                  webkitRequestFileSystem: 'function webkitRequestFileSystem() { [native code] }',
+                  chrome: {
                         loadTimes: 'function () { [native code] }',
                         csi: 'function () { [native code] }',
-                        app:
-                        {
-                              getIsInstalled:
-                              {
+                        app: {
+                              getIsInstalled: {
                                     getIsInstalled: 'function GetIsInstalled() { [native code] }',
                                     getDetails: 'function GetDetails() { [native code] }',
                                     runningState: 'function GetRunningState() { [native code] }',
                                     isInstalled: false,
                                     installState: 'function getInstallState(callback) {  var callbackId = nextCallbackId++;  callbacks[callbackId] = callback;  appNatives.GetInstallState(callbackId);}'
                               },
-                              getDetails:
-                              {
+                              getDetails: {
                                     getIsInstalled: 'function GetIsInstalled() { [native code] }',
                                     getDetails: 'function GetDetails() { [native code] }',
                                     runningState: 'function GetRunningState() { [native code] }',
                                     isInstalled: false,
                                     installState: 'function getInstallState(callback) {  var callbackId = nextCallbackId++;  callbacks[callbackId] = callback;  appNatives.GetInstallState(callbackId);}'
                               },
-                              runningState:
-                              {
+                              runningState: {
                                     getIsInstalled: 'function GetIsInstalled() { [native code] }',
                                     getDetails: 'function GetDetails() { [native code] }',
                                     runningState: 'function GetRunningState() { [native code] }',
                                     isInstalled: false,
                                     installState: 'function getInstallState(callback) {  var callbackId = nextCallbackId++;  callbacks[callbackId] = callback;  appNatives.GetInstallState(callbackId);}'
                               },
-                              isInstalled:
-                              {
+                              isInstalled: {
                                     getIsInstalled: 'function GetIsInstalled() { [native code] }',
                                     getDetails: 'function GetDetails() { [native code] }',
                                     runningState: 'function GetRunningState() { [native code] }',
                                     isInstalled: false,
                                     installState: 'function getInstallState(callback) {  var callbackId = nextCallbackId++;  callbacks[callbackId] = callback;  appNatives.GetInstallState(callbackId);}'
                               },
-                              installState:
-                              {
+                              installState: {
                                     getIsInstalled: 'function GetIsInstalled() { [native code] }',
                                     getDetails: 'function GetDetails() { [native code] }',
                                     runningState: 'function GetRunningState() { [native code] }',
@@ -162,30 +142,25 @@ class Chrome {
                                     installState: 'function getInstallState(callback) {  var callbackId = nextCallbackId++;  callbacks[callbackId] = callback;  appNatives.GetInstallState(callbackId);}'
                               }
                         },
-                        webstore:
-                        {
-                              install:
-                              {
+                        webstore: {
+                              install: {
                                     install: 'function (url, onSuccess, onFailure) {    installer.install(url, onSuccess, onFailure);  }',
                                     onInstallStageChanged: {},
                                     onDownloadProgress: {}
                               },
-                              onInstallStageChanged:
-                              {
+                              onInstallStageChanged: {
                                     install: 'function (url, onSuccess, onFailure) {    installer.install(url, onSuccess, onFailure);  }',
                                     onInstallStageChanged: {},
                                     onDownloadProgress: {}
                               },
-                              onDownloadProgress:
-                              {
+                              onDownloadProgress: {
                                     install: 'function (url, onSuccess, onFailure) {    installer.install(url, onSuccess, onFailure);  }',
                                     onInstallStageChanged: {},
                                     onDownloadProgress: {}
                               }
                         }
                   },
-                  console:
-                  {
+                  console: {
                         debug: 'function debug() { [native code] }',
                         error: 'function error() { [native code] }',
                         info: 'function info() { [native code] }',
@@ -211,243 +186,13 @@ class Chrome {
                         timeStamp: 'function timeStamp() { [native code] }',
                         memory: {}
                   },
-                  customElements:
-                  {
+                  customElements: {
                         define: 'function define() { [native code] }',
                         get: 'function get() { [native code] }',
                         whenDefined: 'function whenDefined() { [native code] }'
                   },
-                  onauxclick: {},
-                  synteticWindow: {
-                        speechSynthesis:
-                        {
-                              pending:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              speaking:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              paused:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              onvoiceschanged:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              speak:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              cancel:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              pause:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              resume:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              getVoices:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              addEventListener:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              removeEventListener:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              },
-                              dispatchEvent:
-                              {
-                                    pending: false,
-                                    speaking: false,
-                                    paused: false,
-                                    onvoiceschanged: {},
-                                    speak: 'function speak() { [native code] }',
-                                    cancel: 'function cancel() { [native code] }',
-                                    pause: 'function pause() { [native code] }',
-                                    resume: 'function resume() { [native code] }',
-                                    getVoices: 'function getVoices() { [native code] }',
-                                    addEventListener: 'function addEventListener() { [native code] }',
-                                    removeEventListener: 'function removeEventListener() { [native code] }',
-                                    dispatchEvent: 'function dispatchEvent() { [native code] }'
-                              }
-                        },
-                        caches:
-                        {
-                              match:
-                              {
-                                    match: 'function match() { [native code] }',
-                                    has: 'function has() { [native code] }',
-                                    open: 'function open() { [native code] }',
-                                    delete: 'function delete() { [native code] }',
-                                    keys: 'function keys() { [native code] }'
-                              },
-                              has:
-                              {
-                                    match: 'function match() { [native code] }',
-                                    has: 'function has() { [native code] }',
-                                    open: 'function open() { [native code] }',
-                                    delete: 'function delete() { [native code] }',
-                                    keys: 'function keys() { [native code] }'
-                              },
-                              open:
-                              {
-                                    match: 'function match() { [native code] }',
-                                    has: 'function has() { [native code] }',
-                                    open: 'function open() { [native code] }',
-                                    delete: 'function delete() { [native code] }',
-                                    keys: 'function keys() { [native code] }'
-                              },
-                              delete:
-                              {
-                                    match: 'function match() { [native code] }',
-                                    has: 'function has() { [native code] }',
-                                    open: 'function open() { [native code] }',
-                                    delete: 'function delete() { [native code] }',
-                                    keys: 'function keys() { [native code] }'
-                              },
-                              keys:
-                              {
-                                    match: 'function match() { [native code] }',
-                                    has: 'function has() { [native code] }',
-                                    open: 'function open() { [native code] }',
-                                    delete: 'function delete() { [native code] }',
-                                    keys: 'function keys() { [native code] }'
-                              }
-                        }
-                  },
-                  windowPropertiesStorage:
-                  {
+                  onauxclick: 'function onauxclick() { [native code] }',
+                  windowPropertiesStorage: {
                         '0': 'speechSynthesis',
                         '1': 'caches',
                         '2': 'stop',
@@ -654,8 +399,8 @@ class Chrome {
                         '203': 'dispatchEvent'
                   },
                   performance: {
-                        onresourcetimingbufferfull: {},
-                        onwebkitresourcetimingbufferfull: {},
+                        onresourcetimingbufferfull: null,
+                        onwebkitresourcetimingbufferfull: null,
                         now: 'function now() { [native code] }',
                         getEntries: 'function getEntries() { [native code] }',
                         getEntriesByType: 'function getEntriesByType() { [native code] }',
@@ -673,145 +418,110 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  onunload: {},
-                  onunhandledrejection: {},
-                  onstorage: {},
-                  onrejectionhandled: {},
-                  onpopstate: {},
-                  onpageshow: {},
-                  onpagehide: {},
-                  ononline: {},
-                  onoffline: {},
-                  onmessage: {},
-                  onlanguagechange: {},
-                  onhashchange: {},
-                  onbeforeunload: {},
-                  onwaiting: {},
-                  onvolumechange: {},
-                  ontoggle: {},
-                  ontimeupdate: {},
-                  onsuspend: {},
-                  onsubmit: {},
-                  onstalled: {},
-                  onshow: {},
-                  onselect: {},
-                  onseeking: {},
-                  onseeked: {},
-                  onscroll: {},
-                  onresize: {},
-                  onreset: {},
-                  onratechange: {},
-                  onprogress: {},
-                  onplaying: {},
-                  onplay: {},
-                  onpause: {},
-                  onmousewheel: {},
-                  onmouseup: {},
-                  onmouseover: {},
-                  onmouseout: {},
-                  onmousemove: {},
-                  onmouseleave: {},
-                  onmouseenter: {},
-                  onmousedown: {},
-                  onloadstart: {},
-                  onloadedmetadata: {},
-                  onloadeddata: {},
-                  onload: {},
-                  onkeyup: {},
-                  onkeypress: {},
-                  onkeydown: {},
-                  oninvalid: {},
-                  oninput: {},
-                  onfocus: {},
-                  onerror: {},
-                  onended: {},
-                  onemptied: {},
-                  ondurationchange: {},
-                  ondrop: {},
-                  ondragstart: {},
-                  ondragover: {},
-                  ondragleave: {},
-                  ondragenter: {},
-                  ondragend: {},
-                  ondrag: {},
-                  ondblclick: {},
-                  oncuechange: {},
-                  oncontextmenu: {},
-                  onclose: {},
-                  onclick: {},
-                  onchange: {},
-                  oncanplaythrough: {},
-                  oncanplay: {},
-                  oncancel: {},
-                  onblur: {},
-                  onabort: {},
-                  isSecureContext: {},
-                  onwheel: {},
-                  onwebkittransitionend: {},
-                  onwebkitanimationstart: {},
-                  onwebkitanimationiteration: {},
-                  onwebkitanimationend: {},
-                  ontransitionend: {},
-                  onsearch: {},
-                  onanimationstart: {},
-                  onanimationiteration: {},
-                  onanimationend: {},
-                  styleMedia:
-                  {
+                  onunload: null,
+                  onunhandledrejection: null,
+                  onstorage: null,
+                  onrejectionhandled: null,
+                  onpopstate: null,
+                  onpageshow: null,
+                  onpagehide: null,
+                  ononline: null,
+                  onoffline: null,
+                  onmessage: null,
+                  onlanguagechange: null,
+                  onhashchange: null,
+                  onbeforeunload: null,
+                  onwaiting: null,
+                  onvolumechange: null,
+                  ontoggle: null,
+                  ontimeupdate: null,
+                  onsuspend: null,
+                  onsubmit: null,
+                  onstalled: null,
+                  onshow: null,
+                  onselect: null,
+                  onseeking: null,
+                  onseeked: null,
+                  onscroll: null,
+                  onresize: null,
+                  onreset: null,
+                  onratechange: null,
+                  onprogress: null,
+                  onplaying: null,
+                  onplay: null,
+                  onpause: null,
+                  onmousewheel: null,
+                  onmouseup: null,
+                  onmouseover: null,
+                  onmouseout: null,
+                  onmousemove: null,
+                  onmouseleave: null,
+                  onmouseenter: null,
+                  onmousedown: null,
+                  onloadstart: null,
+                  onloadedmetadata: null,
+                  onloadeddata: null,
+                  onload: null,
+                  onkeyup: null,
+                  onkeypress: null,
+                  onkeydown: null,
+                  oninvalid: null,
+                  oninput: null,
+                  onfocus: null,
+                  onerror: null,
+                  onended: null,
+                  onemptied: null,
+                  ondurationchange: null,
+                  ondrop: null,
+                  ondragstart: null,
+                  ondragover: null,
+                  ondragleave: null,
+                  ondragenter: null,
+                  ondragend: null,
+                  ondrag: null,
+                  ondblclick: null,
+                  oncuechange: null,
+                  oncontextmenu: null,
+                  onclose: null,
+                  onclick: null,
+                  onchange: null,
+                  oncanplaythrough: null,
+                  oncanplay: null,
+                  oncancel: null,
+                  onblur: null,
+                  onabort: null,
+                  isSecureContext: null,
+                  onwheel: null,
+                  onwebkittransitionend: null,
+                  onwebkitanimationstart: null,
+                  onwebkitanimationiteration: null,
+                  onwebkitanimationend: null,
+                  ontransitionend: null,
+                  onsearch: null,
+                  onanimationstart: null,
+                  onanimationiteration: null,
+                  onanimationend: null,
+                  styleMedia: {
                         type: 'screen',
                         matchMedium: 'function matchMedium() { [native code] }'
                   },
-                  defaultstatus: {},
-                  defaultStatus: {},
-                  screenTop: {},
-                  screenLeft: {},
-                  clientInformation: {
-                        vendorSub: '',
-                        productSub: '20030107',
-                        vendor: 'Google Inc.',
-                        maxTouchPoints: 0,
-                        hardwareConcurrency: 4,
-                        appCodeName: 'Mozilla',
-                        appName: 'Netscape',
-                        appVersion: '5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
-                        platform: 'Linux x86_64',
-                        product: 'Gecko',
-                        userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
-                        language: 'ru',
-                        languages:
-                        [{ '0': 'r', '1': 'u', '2': '-', '3': 'R', '4': 'U' },
-                        { '0': 'r', '1': 'u' },
-                        { '0': 'e', '1': 'n', '2': '-', '3': 'U', '4': 'S' },
-                        { '0': 'e', '1': 'n' }],
-                        onLine: true,
-                        cookieEnabled: true,
-                        doNotTrack: {},
-                        geolocation: {},
-                        getBattery: 'function getBattery() { [native code] }',
-                        sendBeacon: 'function sendBeacon() { [native code] }',
-                        requestMediaKeySystemAccess: 'function requestMediaKeySystemAccess() { [native code] }',
-                        getGamepads: 'function getGamepads() { [native code] }',
-                        webkitGetUserMedia: 'function webkitGetUserMedia() { [native code] }',
-                        javaEnabled: 'function javaEnabled() { [native code] }',
-                        vibrate: 'function vibrate() { [native code] }',
-                        requestMIDIAccess: 'function requestMIDIAccess() { [native code] }',
-                        getUserMedia: 'function getUserMedia() { [native code] }',
-                        registerProtocolHandler: 'function registerProtocolHandler() { [native code] }',
-                        unregisterProtocolHandler: 'function unregisterProtocolHandler() { [native code] }'
-                  },
-                  devicePixelRatio: {},
-                  outerHeight: {},
-                  outerWidth: {},
-                  screenY: {},
-                  screenX: {},
+                  defaultstatus: '',
+                  defaultStatus: '',
+                  screenTop: {},//
+                  screenLeft: {},//
+                  clientInformation: this.generateNavigator(),
+                  devicePixelRatio: 1,
+                  outerHeight: {},//
+                  outerWidth: {},//
+                  screenY: {},//
+                  screenX: {},//
                   pageYOffset: {},
-                  scrollY: {},
-                  pageXOffset: {},
+                  scrollY: {},//
+                  pageXOffset: {},//
                   scrollX: {},
                   innerHeight: {},
                   innerWidth: {},
-                  screen:
-                  {
+                  screen: {
                         availWidth: 1920,
                         availHeight: 1056,
                         width: 1920,
@@ -822,13 +532,11 @@ class Chrome {
                         availTop: 24,
                         orientation: {}
                   },
-                  external:
-                  {
+                  external: {
                         AddSearchProvider: 'function AddSearchProvider() { [native code] }',
                         IsSearchProviderInstalled: 'function IsSearchProviderInstalled() { [native code] }'
                   },
-                  applicationCache:
-                  {
+                  applicationCache: {
                         UNCACHED: 0,
                         IDLE: 1,
                         CHECKING: 2,
@@ -845,65 +553,29 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  navigator:
-                  {
-                        vendorSub: '',
-                        productSub: '20030107',
-                        vendor: 'Google Inc.',
-                        maxTouchPoints: 0,
-                        hardwareConcurrency: 4,
-                        appCodeName: 'Mozilla',
-                        appName: 'Netscape',
-                        appVersion: '5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
-                        platform: 'Linux x86_64',
-                        product: 'Gecko',
-                        userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
-                        language: 'ru',
-                        languages:
-                        [{ '0': 'r', '1': 'u', '2': '-', '3': 'R', '4': 'U' },
-                        { '0': 'r', '1': 'u' },
-                        { '0': 'e', '1': 'n', '2': '-', '3': 'U', '4': 'S' },
-                        { '0': 'e', '1': 'n' }],
-                        onLine: true,
-                        cookieEnabled: true,
-                        doNotTrack: {},
-                        geolocation: {},
-                        getBattery: 'function getBattery() { [native code] }',
-                        sendBeacon: 'function sendBeacon() { [native code] }',
-                        requestMediaKeySystemAccess: 'function requestMediaKeySystemAccess() { [native code] }',
-                        getGamepads: 'function getGamepads() { [native code] }',
-                        webkitGetUserMedia: 'function webkitGetUserMedia() { [native code] }',
-                        javaEnabled: 'function javaEnabled() { [native code] }',
-                        vibrate: 'function vibrate() { [native code] }',
-                        requestMIDIAccess: 'function requestMIDIAccess() { [native code] }',
-                        getUserMedia: 'function getUserMedia() { [native code] }',
-                        registerProtocolHandler: 'function registerProtocolHandler() { [native code] }',
-                        unregisterProtocolHandler: 'function unregisterProtocolHandler() { [native code] }'
-                  },
-                  frameElement: {},
-                  opener: {},
-                  length: {},
-                  closed: {},
-                  status: {},
+                  navigator: this.generateNavigator(),
+                  frameElement: null,
+                  opener: null,
+                  length: null,
+                  closed: null,
+                  status: null,
                   toolbar: { visible: true },
                   statusbar: { visible: true },
                   scrollbars: { visible: true },
                   personalbar: { visible: true },
                   menubar: { visible: true },
                   locationbar: { visible: true },
-                  history:
-                  {
+                  history: {
                         length: 2,
                         scrollRestoration: 'auto',
-                        state: {},
+                        state: null,
                         go: 'function go() { [native code] }',
                         back: 'function back() { [native code] }',
                         forward: 'function forward() { [native code] }',
                         pushState: 'function pushState() { [native code] }',
                         replaceState: 'function replaceState() { [native code] }'
                   },
-                  location:
-                  {
+                  location: {
                         replace: 'function () { [native code] }',
                         assign: 'function () { [native code] }',
                         hash: '',
@@ -914,16 +586,16 @@ class Chrome {
                         host: 'ead369eb.ngrok.io',
                         protocol: 'http:',
                         origin: 'http://ead369eb.ngrok.io',
-                        href: 'http://ead369eb.ngrok.io/',
+                        href: '',
                         ancestorOrigins: {},
                         reload: 'function reload() { [native code] }'
                   },
-                  name: {},
-                  TEMPORARY: {},
-                  PERSISTENT: {},
-                  addEventListener: {},
-                  removeEventListener: {},
-                  dispatchEvent: {}
+                  name: '',
+                  TEMPORARY: 0,
+                  PERSISTENT: 1,
+                  addEventListener: 'function addEventListener() { [native code] }',
+                  removeEventListener: 'function removeEventListener() { [native code] }',
+                  dispatchEvent: 'function dispatchEvent() { [native code] }'
             };
       }
       /*      
@@ -933,8 +605,7 @@ class Chrome {
       */
       get document() {
             return {
-                  location:
-                  {
+                  location: {
                         replace: 'function () { [native code] }',
                         assign: 'function () { [native code] }',
                         hash: '',
@@ -945,146 +616,40 @@ class Chrome {
                         host: 'ead369eb.ngrok.io',
                         protocol: 'http:',
                         origin: 'http://ead369eb.ngrok.io',
-                        href: 'http://ead369eb.ngrok.io/',
+                        href: '',
                         ancestorOrigins: {},
                         reload: 'function reload() { [native code] }'
                   },
-                  fgColor: {},
-                  linkColor: {},
-                  vlinkColor: {},
-                  alinkColor: {},
-                  bgColor: {},
-                  all:
-                  {
+                  fgColor: '',
+                  linkColor: '',
+                  vlinkColor: '',
+                  alinkColor: '',
+                  bgColor: '',
+                  all: {
                         '0': {},
                         '1': {},
                         length: 7,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  clear: {},
-                  captureEvents: {},
-                  releaseEvents: {},
-                  implementation:
-                  {
+                  clear: 'function clear() { [native code] }',
+                  captureEvents: 'function captureEvents() { [native code] }',
+                  releaseEvents: 'function releaseEvents() { [native code] }',
+                  implementation: {
                         createDocumentType: 'function createDocumentType() { [native code] }',
                         createDocument: 'function createDocument() { [native code] }',
                         createHTMLDocument: 'function createHTMLDocument() { [native code] }',
                         hasFeature: 'function hasFeature() { [native code] }'
                   },
-                  URL:
-                  {
-                        '0': 'h',
-                        '1': 't',
-                        '2': 't',
-                        '3': 'p',
-                        '4': ':',
-                        '5': '/',
-                        '6': '/',
-                        '7': 'e',
-                        '8': 'a',
-                        '9': 'd',
-                        '10': '3',
-                        '11': '6',
-                        '12': '9',
-                        '13': 'e',
-                        '14': 'b',
-                        '15': '.',
-                        '16': 'n',
-                        '17': 'g',
-                        '18': 'r',
-                        '19': 'o',
-                        '20': 'k',
-                        '21': '.',
-                        '22': 'i',
-                        '23': 'o',
-                        '24': '/'
-                  },
-                  documentURI:
-                  {
-                        '0': 'h',
-                        '1': 't',
-                        '2': 't',
-                        '3': 'p',
-                        '4': ':',
-                        '5': '/',
-                        '6': '/',
-                        '7': 'e',
-                        '8': 'a',
-                        '9': 'd',
-                        '10': '3',
-                        '11': '6',
-                        '12': '9',
-                        '13': 'e',
-                        '14': 'b',
-                        '15': '.',
-                        '16': 'n',
-                        '17': 'g',
-                        '18': 'r',
-                        '19': 'o',
-                        '20': 'k',
-                        '21': '.',
-                        '22': 'i',
-                        '23': 'o',
-                        '24': '/'
-                  },
-                  origin:
-                  {
-                        '0': 'h',
-                        '1': 't',
-                        '2': 't',
-                        '3': 'p',
-                        '4': ':',
-                        '5': '/',
-                        '6': '/',
-                        '7': 'e',
-                        '8': 'a',
-                        '9': 'd',
-                        '10': '3',
-                        '11': '6',
-                        '12': '9',
-                        '13': 'e',
-                        '14': 'b',
-                        '15': '.',
-                        '16': 'n',
-                        '17': 'g',
-                        '18': 'r',
-                        '19': 'o',
-                        '20': 'k',
-                        '21': '.',
-                        '22': 'i',
-                        '23': 'o'
-                  },
-                  compatMode:
-                  {
-                        '0': 'C',
-                        '1': 'S',
-                        '2': 'S',
-                        '3': '1',
-                        '4': 'C',
-                        '5': 'o',
-                        '6': 'm',
-                        '7': 'p',
-                        '8': 'a',
-                        '9': 't'
-                  },
-                  characterSet: { '0': 'U', '1': 'T', '2': 'F', '3': '-', '4': '8' },
-                  charset: { '0': 'U', '1': 'T', '2': 'F', '3': '-', '4': '8' },
-                  inputEncoding: { '0': 'U', '1': 'T', '2': 'F', '3': '-', '4': '8' },
-                  contentType:
-                  {
-                        '0': 't',
-                        '1': 'e',
-                        '2': 'x',
-                        '3': 't',
-                        '4': '/',
-                        '5': 'h',
-                        '6': 't',
-                        '7': 'm',
-                        '8': 'l'
-                  },
-                  doctype:
-                  {
+                  URL: '',
+                  documentURI: '',
+                  origin: '',
+                  compatMode: 'CSS1Compat',
+                  characterSet: "UTF-8",
+                  charset: "UTF-8",
+                  inputEncoding: "UTF-8",
+                  contentType: "text/html",
+                  doctype: {
                         name: 'html',
                         publicId: '',
                         systemId: '',
@@ -1112,7 +677,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 10,
                         nodeName: 'html',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         ownerDocument: {},
                         parentNode: {},
@@ -1135,8 +700,7 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  documentElement:
-                  {
+                  documentElement: {
                         version: '',
                         title: '',
                         lang: 'en',
@@ -1243,7 +807,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'HTML',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -1268,64 +832,14 @@ class Chrome {
                   xmlEncoding: {},
                   xmlVersion: {},
                   xmlStandalone: {},
-                  domain:
-                  {
-                        '0': 'e',
-                        '1': 'a',
-                        '2': 'd',
-                        '3': '3',
-                        '4': '6',
-                        '5': '9',
-                        '6': 'e',
-                        '7': 'b',
-                        '8': '.',
-                        '9': 'n',
-                        '10': 'g',
-                        '11': 'r',
-                        '12': 'o',
-                        '13': 'k',
-                        '14': '.',
-                        '15': 'i',
-                        '16': 'o'
-                  },
-                  referrer: {},
+                  domain: '',//
+                  referrer: {}, //
                   cookie: this.generateSynteticCookies().string, // {}  или jbj
-                  lastModified:
-                  {
-                        '0': '0',
-                        '1': '4',
-                        '2': '/',
-                        '3': '0',
-                        '4': '7',
-                        '5': '/',
-                        '6': '2',
-                        '7': '0',
-                        '8': '1',
-                        '9': '7',
-                        '10': ' ',
-                        '11': '0',
-                        '12': '0',
-                        '13': ':',
-                        '14': '4',
-                        '15': '4',
-                        '16': ':',
-                        '17': '1',
-                        '18': '3'
-                  },
-                  readyState:
-                  {
-                        '0': 'l',
-                        '1': 'o',
-                        '2': 'a',
-                        '3': 'd',
-                        '4': 'i',
-                        '5': 'n',
-                        '6': 'g'
-                  },
-                  title: { '0': '6', '1': '6', '2': '6' },
-                  dir: {},
-                  body:
-                  {
+                  lastModified: "04/11/2017 19:10:42", //
+                  readyState: "complete",
+                  title: '',
+                  dir: '',
+                  body: {
                         text: '',
                         link: '',
                         vLink: '',
@@ -1437,7 +951,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'BODY',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -1459,8 +973,7 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  head:
-                  {
+                  head: {
                         title: '',
                         lang: '',
                         translate: true,
@@ -1566,7 +1079,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'HEAD',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '  ',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -1588,46 +1101,39 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  images:
-                  {
+                  images: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  embeds:
-                  {
+                  embeds: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  plugins:
-                  {
+                  plugins: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  links:
-                  {
+                  links: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  forms:
-                  {
+                  forms: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  scripts:
-                  {
+                  scripts: {
                         '0': {},
                         '1': {},
                         length: 2,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  currentScript:
-                  {
+                  currentScript: {
                         src: '',
                         type: '',
                         charset: '',
@@ -1740,7 +1246,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'SCRIPT',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -1762,24 +1268,21 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  designMode: { '0': 'o', '1': 'f', '2': 'f' },
-                  onreadystatechange: {},
-                  anchors:
-                  {
+                  designMode: "off",
+                  onreadystatechange: null,
+                  anchors: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  applets:
-                  {
+                  applets: {
                         length: 0,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  selectedStylesheetSet: {},
-                  preferredStylesheetSet: {},
-                  scrollingElement:
-                  {
+                  selectedStylesheetSet: null,
+                  preferredStylesheetSet: null,
+                  scrollingElement: {
                         text: '',
                         link: '',
                         vLink: '',
@@ -1890,7 +1393,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'BODY',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -2066,7 +1569,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'BODY',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -2089,75 +1592,73 @@ class Chrome {
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
                   styleSheets: { length: 0, item: 'function item() { [native code] }' },
-                  pointerLockElement: {},
-                  onabort: {},
-                  onblur: {},
-                  oncancel: {},
-                  oncanplay: {},
-                  oncanplaythrough: {},
-                  onchange: {},
-                  onclick: {},
-                  onclose: {},
-                  oncontextmenu: {},
-                  oncuechange: {},
-                  ondblclick: {},
-                  ondrag: {},
-                  ondragend: {},
-                  ondragenter: {},
-                  ondragleave: {},
-                  ondragover: {},
-                  ondragstart: {},
-                  ondrop: {},
-                  ondurationchange: {},
-                  onemptied: {},
-                  onended: {},
-                  onerror: {},
-                  onfocus: {},
-                  oninput: {},
-                  oninvalid: {},
-                  onkeydown: {},
-                  onkeypress: {},
-                  onkeyup: {},
-                  onload: {},
-                  onloadeddata: {},
-                  onloadedmetadata: {},
-                  onloadstart: {},
-                  onmousedown: {},
-                  onmouseenter: {},
-                  onmouseleave: {},
-                  onmousemove: {},
-                  onmouseout: {},
-                  onmouseover: {},
-                  onmouseup: {},
-                  onmousewheel: {},
-                  onpause: {},
-                  onplay: {},
-                  onplaying: {},
-                  onprogress: {},
-                  onratechange: {},
-                  onreset: {},
-                  onresize: {},
-                  onscroll: {},
-                  onseeked: {},
-                  onseeking: {},
-                  onselect: {},
-                  onshow: {},
-                  onstalled: {},
-                  onsubmit: {},
-                  onsuspend: {},
-                  ontimeupdate: {},
-                  ontoggle: {},
-                  onvolumechange: {},
-                  onwaiting: {},
-                  children:
-                  {
+                  pointerLockElement: null,
+                  onabort: null,
+                  onblur: null,
+                  oncancel: null,
+                  oncanplay: null,
+                  oncanplaythrough: null,
+                  onchange: null,
+                  onclick: null,
+                  onclose: null,
+                  oncontextmenu: null,
+                  oncuechange: null,
+                  ondblclick: null,
+                  ondrag: null,
+                  ondragend: null,
+                  ondragenter: null,
+                  ondragleave: null,
+                  ondragover: null,
+                  ondragstart: null,
+                  ondrop: null,
+                  ondurationchange: null,
+                  onemptied: null,
+                  onended: null,
+                  onerror: null,
+                  onfocus: null,
+                  oninput: null,
+                  oninvalid: null,
+                  onkeydown: null,
+                  onkeypress: null,
+                  onkeyup: null,
+                  onload: null,
+                  onloadeddata: null,
+                  onloadedmetadata: null,
+                  onloadstart: null,
+                  onmousedown: null,
+                  onmouseenter: null,
+                  onmouseleave: null,
+                  onmousemove: null,
+                  onmouseout: null,
+                  onmouseover: null,
+                  onmouseup: null,
+                  onmousewheel: null,
+                  onpause: null,
+                  onplay: null,
+                  onplaying: null,
+                  onprogress: null,
+                  onratechange: null,
+                  onreset: null,
+                  onresize: null,
+                  onscroll: null,
+                  onseeked: null,
+                  onseeking: null,
+                  onselect: null,
+                  onshow: null,
+                  onstalled: null,
+                  onsubmit: null,
+                  onsuspend: null,
+                  ontimeupdate: null,
+                  ontoggle: null,
+                  onvolumechange: null,
+                  onwaiting: null,
+                  children: {
                         '0': {},
                         length: 1,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
-                  firstElementChild:
-                  {
+                  firstElementChild: {
                         version: '',
                         title: '',
                         lang: 'en',
@@ -2263,7 +1764,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'HTML',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -2392,7 +1893,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'HTML',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -2414,81 +1915,72 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  childElementCount: {},
-                  rootElement: {},
-                  getElementsByTagName: {},
-                  getElementsByTagNameNS: {},
-                  getElementsByClassName: {},
-                  createDocumentFragment: {},
-                  createTextNode: {},
-                  createCDATASection: {},
-                  createComment: {},
-                  createProcessingInstruction: {},
-                  importNode: {},
-                  adoptNode: {},
-                  createAttribute: {},
-                  createAttributeNS: {},
-                  createEvent: {},
-                  createRange: {},
-                  createNodeIterator: {},
-                  createTreeWalker: {},
-                  getElementsByName: {},
-                  open: {},
-                  close: {},
-                  write: {},
-                  writeln: {},
-                  hasFocus: {},
-                  execCommand: {},
-                  queryCommandEnabled: {},
-                  queryCommandIndeterm: {},
-                  queryCommandState: {},
-                  queryCommandSupported: {},
-                  queryCommandValue: {},
-                  exitPointerLock: {},
-                  registerElement: {},
-                  createElement: {},
-                  createElementNS: {},
-                  caretRangeFromPoint: {},
-                  webkitCancelFullScreen: {},
-                  webkitExitFullscreen: {},
-                  getSelection: {},
-                  elementFromPoint: {},
-                  elementsFromPoint: {},
-                  getElementById: {},
-                  querySelector: {},
-                  querySelectorAll: {},
-                  createExpression: {},
-                  createNSResolver: {},
-                  evaluate: {},
-                  onauxclick: {},
-                  onpointercancel: {},
-                  onpointerdown: {},
-                  onpointerenter: {},
-                  onpointerleave: {},
-                  onpointermove: {},
-                  onpointerout: {},
-                  onpointerover: {},
-                  onpointerup: {},
-                  prepend: {},
-                  append: {},
-                  ELEMENT_NODE: {},
-                  ATTRIBUTE_NODE: {},
-                  TEXT_NODE: {},
-                  CDATA_SECTION_NODE: {},
-                  ENTITY_REFERENCE_NODE: {},
-                  ENTITY_NODE: {},
-                  PROCESSING_INSTRUCTION_NODE: {},
-                  COMMENT_NODE: {},
-                  DOCUMENT_NODE: {},
-                  DOCUMENT_TYPE_NODE: {},
-                  DOCUMENT_FRAGMENT_NODE: {},
-                  NOTATION_NODE: {},
-                  DOCUMENT_POSITION_DISCONNECTED: {},
-                  DOCUMENT_POSITION_PRECEDING: {},
-                  DOCUMENT_POSITION_FOLLOWING: {},
-                  DOCUMENT_POSITION_CONTAINS: {},
-                  DOCUMENT_POSITION_CONTAINED_BY: {},
-                  DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: {},
+                  childElementCount: 1,
+                  getElementsByTagName: 'function getElementsByTagName() { [native code] }',
+                  getElementsByTagNameNS: 'function getElementsByTagNameNS() { [native code] }',
+                  getElementsByClassName: 'function getElementsByClassName() { [native code] }',
+                  createDocumentFragment: 'function createDocumentFragment() { [native code] }',
+                  createTextNode: 'function createTextNode() { [native code] }',
+                  createCDATASection: 'function createCDATASection() { [native code] }',
+                  createComment: 'function createComment() { [native code] }',
+                  createProcessingInstruction: 'function createProcessingInstruction() { [native code] }',
+                  importNode: 'function importNode() { [native code] }',
+                  adoptNode: 'function adoptNode() { [native code] }',
+                  createAttribute: 'function createAttribute() { [native code] }',
+                  createAttributeNS: 'function createAttributeNS() { [native code] }',
+                  createEvent: 'function createEvent() { [native code] }',
+                  createRange: 'function createRange() { [native code] }',
+                  createNodeIterator: 'function createNodeIterator() { [native code] }',
+                  createTreeWalker: 'function createTreeWalker() { [native code] }',
+                  getElementsByName: 'function getElementsByName() { [native code] }',
+                  open: 'function open() { [native code] }',
+                  close: 'function close() { [native code] }',
+                  write: 'function write() { [native code] }',
+                  writeln: 'function writeln() { [native code] }',
+                  hasFocus: 'function hasFocus() { [native code] }',
+                  execCommand: 'function execCommand() { [native code] }',
+                  queryCommandEnabled: 'function queryCommandEnabled() { [native code] }',
+                  queryCommandIndeterm: 'function queryCommandIndeterm() { [native code] }',
+                  queryCommandState: 'function queryCommandState() { [native code] }',
+                  queryCommandSupported: 'function queryCommandSupported() { [native code] }',
+                  queryCommandValue: 'function queryCommandValue() { [native code] }',
+                  exitPointerLock: 'function exitPointerLock() { [native code] }',
+                  registerElement: 'function registerElement() { [native code] }',
+                  createElement: 'function createElement() { [native code] }',
+                  createElementNS: 'function createElementNS() { [native code] }',
+                  caretRangeFromPoint: 'function caretRangeFromPoint() { [native code] }',
+                  webkitCancelFullScreen: 'function webkitCancelFullScreen() { [native code] }',
+                  webkitExitFullscreen: 'function webkitExitFullscreen() { [native code] }',
+                  getSelection: 'function getSelection() { [native code] }',
+                  elementFromPoint: 'function elementFromPoint() { [native code] }',
+                  elementsFromPoint: 'function elementsFromPoint() { [native code] }',
+                  getElementById: 'function getElementById() { [native code] }',
+                  querySelector: 'function querySelector() { [native code] }',
+                  querySelectorAll: 'function querySelectorAll() { [native code] }',
+                  createExpression: 'function createExpression() { [native code] }',
+                  createNSResolver: 'function createNSResolver() { [native code] }',
+                  evaluate: 'function evaluate() { [native code] }',
+                  prepend: 'function prepend() { [native code] }',
+                  append: 'function append() { [native code] }',
+
+                  ELEMENT_NODE: 1,
+                  ATTRIBUTE_NODE: 2,
+                  TEXT_NODE: 3,
+                  CDATA_SECTION_NODE: 4,
+                  ENTITY_REFERENCE_NODE: 5,
+                  ENTITY_NODE: 6,
+                  PROCESSING_INSTRUCTION_NODE: 7,
+                  COMMENT_NODE: 8,
+                  DOCUMENT_NODE: 9,
+                  DOCUMENT_TYPE_NODE: 10,
+                  DOCUMENT_FRAGMENT_NODE: 11,
+                  NOTATION_NODE: 12,
+                  DOCUMENT_POSITION_DISCONNECTED: 1,
+                  DOCUMENT_POSITION_PRECEDING: 2,
+                  DOCUMENT_POSITION_FOLLOWING: 4,
+                  DOCUMENT_POSITION_CONTAINS: 8,
+                  DOCUMENT_POSITION_CONTAINED_BY: 16,
+                  DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                   nodeType: {},
                   nodeName: '#document',
                   baseURI: '',
@@ -2536,7 +2028,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 10,
                         nodeName: 'html',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         ownerDocument: {},
                         parentNode: {},
@@ -2666,7 +2158,7 @@ class Chrome {
                         DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32,
                         nodeType: 1,
                         nodeName: 'HTML',
-                        baseURI: 'http://ead369eb.ngrok.io/',
+                        baseURI: '',
                         isConnected: true,
                         textContent: '',
                         hasChildNodes: 'function hasChildNodes() { [native code] }',
@@ -2688,28 +2180,28 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  previousSibling: {},
-                  nextSibling: {},
-                  nodeValue: {},
-                  textContent: {},
-                  hasChildNodes: {},
-                  getRootNode: {},
-                  normalize: {},
-                  cloneNode: {},
-                  isEqualNode: {},
-                  isSameNode: {},
-                  compareDocumentPosition: {},
-                  contains: {},
-                  lookupPrefix: {},
-                  lookupNamespaceURI: {},
-                  isDefaultNamespace: {},
-                  insertBefore: {},
-                  appendChild: {},
-                  replaceChild: {},
-                  removeChild: {},
-                  addEventListener: {},
-                  removeEventListener: {},
-                  dispatchEvent: {}
+                  previousSibling: null,
+                  nextSibling: null,
+                  nodeValue: null,
+                  textContent: null,
+                  hasChildNodes: ' function hasChildNodes() { [native code] }',
+                  getRootNode: 'function getRootNode() { [native code] }',
+                  normalize: 'function normalize() { [native code] }',
+                  cloneNode: 'function cloneNode() { [native code] }',
+                  isEqualNode: 'function isEqualNode() { [native code] }',
+                  isSameNode: ' function isSameNode() { [native code] }',
+                  compareDocumentPosition: 'function compareDocumentPosition() { [native code] }',
+                  contains: 'function contains() { [native code] }',
+                  lookupPrefix: 'function lookupPrefix() { [native code] }',
+                  lookupNamespaceURI: 'function lookupNamespaceURI() { [native code] }',
+                  isDefaultNamespace: 'function isDefaultNamespace() { [native code] }',
+                  insertBefore: 'function insertBefore() { [native code] }',
+                  appendChild: 'function appendChild() { [native code] }',
+                  replaceChild: 'function replaceChild() { [native code] }',
+                  removeChild: 'function removeChild() { [native code] }',
+                  addEventListener: 'function addEventListener() { [native code] }',
+                  removeEventListener: 'function removeEventListener() { [native code] }',
+                  dispatchEvent: ' function dispatchEvent() { [native code] }',
             }
       }
       /*
@@ -2722,8 +2214,132 @@ class Chrome {
       generateLocation() {
 
       }
-      generateNavigator() {
 
+      generateLanguages() {
+            // http://www.metamodpro.com/browser-language-codes
+            let langs = [
+                  ["en-US", "zh-CN", "ja-JP"],
+                  ['de-DE', 'nl-be'],
+                  ['it', 'nl'],
+                  ['pl', 'zh-hk', 'fr'],
+                  ['fr-CH', 'pt'],
+                  ['no', 'lv'],
+                  ['sv', 'uk'],
+                  ['es', 'rm']
+            ],
+                  randomLangArray = langs[this.getRandomInt(0, langs.length - 1)];
+            return {
+                  array: randomLangArray,
+                  singleLang: randomLangArray[this.getRandomInt(0, randomLangArray.length - 1)].substring(0, 2)
+            }
+      }
+      generateNavigator() {
+            let synteticLang = this.generateLanguages();
+            // Сoблюсти порядок
+            return {
+                  vendorSub: '',
+                  productSub: '20030107',
+                  vendor: 'Google Inc.',
+                  maxTouchPoints: 0,
+                  hardwareConcurrency: this.getRandomInt(2, 6),
+                  appCodeName: 'Mozilla',
+                  appName: 'Netscape',
+                  appVersion: '5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
+                  platform: 'Linux x86_64',
+                  product: 'Gecko',
+                  userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
+                  language: synteticLang.singleLang,
+                  languages: synteticLang.array,
+                  onLine: true,
+                  cookieEnabled: true,
+                  doNotTrack: null,
+                  geolocation: "[object Geolocation]",
+                  getBattery: 'function getBattery() { [native code] }',
+                  sendBeacon: 'function sendBeacon() { [native code] }',
+                  requestMediaKeySystemAccess: 'function requestMediaKeySystemAccess() { [native code] }',
+                  getGamepads: 'function getGamepads() { [native code] }',
+                  webkitGetUserMedia: 'function webkitGetUserMedia() { [native code] }',
+                  javaEnabled: 'function () { return true; }',
+                  vibrate: 'function vibrate() { [native code] }',
+                  requestMIDIAccess: 'function requestMIDIAccess() { [native code] }',
+                  getUserMedia: 'function getUserMedia() { [native code] }',
+                  registerProtocolHandler: 'function registerProtocolHandler() { [native code] }',
+                  unregisterProtocolHandler: 'function unregisterProtocolHandler() { [native code] }',
+                  plugins: [
+                        {
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              description: "",
+                              filename: "mhjfbmdgcfjbbpaeojofohoefgiehjai",
+                              length: 1,
+                              name: "Chrome PDF Viewer",
+                              __proto__: 'Plugin'
+                        },
+                        {
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              description: "Shockwave Flash 25.0 r0",
+                              filename: "libpepflashplayer.so",
+                              length: 2,
+                              name: "Shockwave Flash",
+                              __proto__: 'Plugin'
+                        },
+                        {
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              description: "Enables Widevine licenses for playback of HTML audio/video content. (version: 1.4.8.962)",
+                              filename: "libwidevinecdmadapter.so",
+                              length: 1,
+                              name: "Widevine Content Decryption Module",
+                              __proto__: 'Plugin'
+                        },
+                        {
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              MimeType: {
+                                    description: "",
+                                    enabledPlugin: 'Plugin',
+                                    suffixes: "pdf",
+                                    type: "application/pdf"
+                              },
+                              description: "",
+                              filename: "internal-nacl-plugin",
+                              length: 2,
+                              name: "Native Client",
+                              __proto__: 'Plugin'
+                        },
+                        {
+                              0: "MimeType",
+                              description: "Portable Document Format",
+                              filename: "internal-pdf-viewer",
+                              length: 1,
+                              name: "Chrome PDF Viewer",
+                              __proto__: 'Plugin'
+                        }
+                  ]
+            }
       }
       generateScreen() {
 
@@ -2741,9 +2357,6 @@ class Chrome {
       }
       generateSynteticCookies() { return this.storage.cookies }
       getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
-
 };
 
-let { window, document } = new Chrome();
-console.log(document.cookie);
 module.exports = { window, document } = new Chrome();
