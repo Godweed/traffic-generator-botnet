@@ -1,11 +1,10 @@
+const Cookies = require(`../../cookie.js`),
+      userAgents = require(`../../UA_storage.js`),
+      referers = require(`../../referer.js`);
+
 class Chrome {
       constructor() {
-            this.storage = {
-                  Cookies: require(`../../cookie.js`),
-                  userAgents: require(`../../UA_storage.js`),
-                  referers: require(`../../referer.js`),
-                  cookies: new Cookies()
-            }
+
       }
       /*      
       *
@@ -822,7 +821,7 @@ class Chrome {
                   xmlStandalone: {},
                   domain: '',//
                   referrer: {}, //
-                  cookie: this.storage.cookies,
+                  cookie: new Cookies(),
                   lastModified: "04/11/2017 19:10:42", //
                   readyState: "complete",
                   title: '',
@@ -2428,7 +2427,7 @@ class Chrome {
                         controller: null, ready: 'Promise', oncontrollerchange: null, onmessage: null
                   },
                   storage: {},
-                  userAgent: this.storage.userAgents[this.getRandomInt(0, this.storage.userAgents.length - 1)],
+                  userAgent: userAgents[this.getRandomInt(0, userAgents.length - 1)],
                   vendor: 'Google Inc.',
                   vendorSub: '',
                   webkitPersistentStorage: {},
@@ -2471,11 +2470,11 @@ class Chrome {
 
       }
       generateUserAgent() {
-            let ua = this.storage.userAgents;
+            let ua = userAgents;
             return ua[this.getRandomInt(0, ua.length - 1)]
       }
       generateReferer() {
-            let r = this.storage.referers;
+            let r = referers;
             return r.static[this.getRandomInt(0, r.static.length - 1)]
       }
       getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
