@@ -1,7 +1,3 @@
-var syntetic = {
-    string: '',
-    object: {}
-};
 const schemas = {
     MFA: {
         '_ga': 'GA1.2.451250355.1487406792',
@@ -84,7 +80,7 @@ function getRandomInt(min, max) {
 //
 // Create ancillary strings for cookies generate:
 //
-var synteticString = synteticIntegers = synteticLetters = '';
+let synteticString = synteticIntegers = synteticLetters = '';
 for (let code of generateAlphaNum()) {
     synteticString += String.fromCharCode(code);
 }
@@ -99,38 +95,24 @@ for (let code of generateAlphaLetters()) {
 *       Create cookies:
 *
 */
-var createSynteticCookies = {
-    _ga: '',
-    _ym_uid: '',
-    PREF: ''
-};
-Object.defineProperty(createSynteticCookies, "_ga", {
-    get: function () {
-        return `GA1.2.${generateCookieSubstring(synteticIntegers, 9)}.${getRandomInt(11, 14)}${generateCookieSubstring(synteticIntegers, 8)}`;
-    }
-});
-Object.defineProperty(createSynteticCookies, "_ym_uid", {
-    get: function () {
-        return `${generateCookieSubstring(synteticIntegers, 19)}`;
-    }
-});
-Object.defineProperty(createSynteticCookies, "PREF", {
-    get: function () {
-        return `f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 2)}&al=en&f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 8)}`;
-    }
-});
-syntetic.string = '_ga=' + createSynteticCookies._ga + ';_gat=1;' + 'PREF=' + createSynteticCookies.PREF;
-syntetic.string.trim();
 //  _ga=GA1.2.893481632.1490194106;
 // _ym_uid=1490194106912865933;
 //  PREF: 'f5=30&al=en&f1=50000000';
-console.log(`СИНТЕТИЧЕСКИЕ COOKIE'S:   ${createSynteticCookies._ga} && ${createSynteticCookies.PREF}`)
-module.exports = {
-    string: syntetic.string,
-    object: syntetic.object
-};
-
-
+class Cookie {
+    constructor() {
+        this.cookies = '_ga=' + this._ga + ';_gat=1;' + 'PREF=' + this.PREF;
+    }
+    get _ga() {
+        return `GA1.2.${generateCookieSubstring(synteticIntegers, 9)}.${getRandomInt(11, 14)}${generateCookieSubstring(synteticIntegers, 8)}`;
+    }
+    get _ym_uid() {
+        return `${generateCookieSubstring(synteticIntegers, 19)}`;
+    }
+    get PREF() {
+        return `f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 2)}&al=en&f${generateCookieSubstring(synteticIntegers, 1)}=${generateCookieSubstring(synteticIntegers, 8)}`;
+    }
+}
+module.exports = Cookie;
 /*
 
 Cookie

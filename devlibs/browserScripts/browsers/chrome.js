@@ -1,9 +1,10 @@
 class Chrome {
       constructor() {
             this.storage = {
-                  cookies: require(`../../cookie.js`),
+                  Cookies: require(`../../cookie.js`),
                   userAgents: require(`../../UA_storage.js`),
                   referers: require(`../../referer.js`),
+                  cookies: new Cookies()
             }
       }
       /*      
@@ -521,17 +522,7 @@ class Chrome {
                   scrollX: {},
                   innerHeight: {},
                   innerWidth: {},
-                  screen: {
-                        availWidth: 1920,
-                        availHeight: 1056,
-                        width: 1920,
-                        height: 1080,
-                        colorDepth: 24,
-                        pixelDepth: 24,
-                        availLeft: 1920,
-                        availTop: 24,
-                        orientation: {}
-                  },
+                  screen: this.generateScreen(),
                   external: {
                         AddSearchProvider: 'function AddSearchProvider() { [native code] }',
                         IsSearchProviderInstalled: 'function IsSearchProviderInstalled() { [native code] }'
@@ -566,7 +557,7 @@ class Chrome {
                   menubar: { visible: true },
                   locationbar: { visible: true },
                   history: {
-                        length: 2,
+                        length: this.getRandomInt(1, 9),
                         scrollRestoration: 'auto',
                         state: null,
                         go: 'function go() { [native code] }',
@@ -582,10 +573,10 @@ class Chrome {
                         search: '',
                         pathname: '/',
                         port: '',
-                        hostname: 'ead369eb.ngrok.io',
-                        host: 'ead369eb.ngrok.io',
+                        hostname: '',
+                        host: '',
                         protocol: 'http:',
-                        origin: 'http://ead369eb.ngrok.io',
+                        origin: '',
                         href: '',
                         ancestorOrigins: {},
                         reload: 'function reload() { [native code] }'
@@ -612,10 +603,10 @@ class Chrome {
                         search: '',
                         pathname: '/',
                         port: '',
-                        hostname: 'ead369eb.ngrok.io',
-                        host: 'ead369eb.ngrok.io',
+                        hostname: '',
+                        host: '',
                         protocol: 'http:',
-                        origin: 'http://ead369eb.ngrok.io',
+                        origin: '',
                         href: '',
                         ancestorOrigins: {},
                         reload: 'function reload() { [native code] }'
@@ -626,9 +617,6 @@ class Chrome {
                   alinkColor: '',
                   bgColor: '',
                   all: {
-                        '0': {},
-                        '1': {},
-                        length: 7,
                         item: 'function item() { [native code] }',
                         namedItem: 'function namedItem() { [native code] }'
                   },
@@ -834,7 +822,7 @@ class Chrome {
                   xmlStandalone: {},
                   domain: '',//
                   referrer: {}, //
-                  cookie: this.generateSynteticCookies().string, // {}  или jbj
+                  cookie: this.storage.cookies,
                   lastModified: "04/11/2017 19:10:42", //
                   readyState: "complete",
                   title: '',
@@ -2214,6 +2202,15 @@ class Chrome {
       generateLocation() {
 
       }
+      generatePlatform() {
+            // http://stackoverflow.com/questions/19877924/what-is-the-list-of-possible-values-for-navigator-platform-as-of-today
+            let platforms = [
+                  'MacIntel', 'Mac68K', 'MacPPC', 'iPad', 'FreeBSD', 'FreeBSD i386', 'FreeBSD amd64', 'Win32', 'Win64', 'BlackBerry', 'Linux ppc64', 'Linux armv7l',
+                  'Win64', 'Win64', 'Win64', 'Win64', 'Win64', 'Win64', 'Win64', 'Win64', 'Win64', 'Win64',
+                  'MacIntel', 'MacIntel', 'MacIntel', 'MacIntel'
+            ];
+            return platforms[this.getRandomInt(0, platforms.length - 1)];
+      }
 
       generateLanguages() {
             // http://www.metamodpro.com/browser-language-codes
@@ -2237,34 +2234,117 @@ class Chrome {
             let synteticLang = this.generateLanguages();
             // Сoблюсти порядок
             return {
-                  vendorSub: '',
-                  productSub: '20030107',
-                  vendor: 'Google Inc.',
-                  maxTouchPoints: 0,
-                  hardwareConcurrency: this.getRandomInt(2, 6),
                   appCodeName: 'Mozilla',
                   appName: 'Netscape',
                   appVersion: '5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
-                  platform: 'Linux x86_64',
-                  product: 'Gecko',
-                  userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36',
+                  cookieEnabled: true,
+                  credentials: {
+                        get: 'function get() { [native code] }',
+                        store: 'function store() { [native code] }',
+                        requireUserMediation: 'function requireUserMediation() { [native code] }'
+                  },
+                  doNotTrack: null,
+                  geolocation: {
+                        getCurrentPosition: 'function getCurrentPosition() { [native code] }',
+                        watchPosition: 'function watchPosition() { [native code] }',
+                        clearWatch: 'function clearWatch() { [native code] }'
+                  },
+                  hardwareConcurrency: this.getRandomInt(2, 6),
                   language: synteticLang.singleLang,
                   languages: synteticLang.array,
+                  maxTouchPoints: 0,
+                  mediaDevices: {
+                        enumerateDevices: 'function enumerateDevices() { [native code] }',
+                        getSupportedConstraints: 'function getSupportedConstraints() { [native code] }',
+                        getUserMedia: 'function getUserMedia() { [native code] }',
+                        addEventListener: 'function addEventListener() { [native code] }',
+                        removeEventListener: 'function removeEventListener() { [native code] }',
+                        dispatchEvent: 'function dispatchEvent() { [native code] }'
+                  },
+                  mimeTypes: [
+                        {
+                              description: "",
+                              enabledPlugin: {
+                                    description: "",
+                                    filename: "mhjfbmdgcfjbbpaeojofohoefgiehjai",
+                                    name: "Chrome PDF Viewer"
+                              },
+                              suffixes: "pdf",
+                              type: "application/pdf",
+                              __proto__: 'MimeType',
+                        },
+                        {
+                              description: "Shockwave Flash",
+                              enabledPlugin: {
+                                    description: "Shockwave Flash 25.0 r0",
+                                    filename: "libpepflashplayer.so",
+                                    name: "Shockwave Flash"
+                              },
+                              suffixes: "swf",
+                              type: "application/x-shockwave-flash",
+                              __proto__: 'MimeType'
+                        },
+                        {
+                              description: "FutureSplash Player",
+                              enabledPlugin: {
+                                    description: "Shockwave Flash 25.0 r0",
+                                    filename: "libpepflashplayer.so",
+                                    name: "Shockwave Flash"
+                              },
+                              suffixes: "spl",
+                              type: "application/futuresplash",
+                              __proto__: 'MimeType'
+                        },
+                        {
+                              description: "Widevine Content Decryption Module",
+                              enabledPlugin: {
+                                    description: "Enables Widevine licenses for playback of HTML audio/video content. (version: 1.4.8.962)",
+                                    filename: "libwidevinecdmadapter.so",
+                                    name: "Widevine Content Decryption Module"
+                              },
+                              suffixes: "",
+                              type: "application/x-ppapi-widevine-cdm",
+                              __proto__: 'MimeType'
+                        },
+                        {
+                              description: "Native Client Executable",
+                              enabledPlugin: {
+                                    description: "",
+                                    filename: "internal-nacl-plugin",
+                                    name: "Native Client"
+                              },
+                              suffixes: "",
+                              type: "application/x-nacl",
+                              __proto__: 'MimeType'
+                        },
+                        {
+                              description: "Portable Native Client Executable",
+                              enabledPlugin: {
+                                    description: "",
+                                    filename: "internal-nacl-plugin",
+                                    name: "Native Client"
+                              },
+                              suffixes: "",
+                              type: "application/x-pnacl",
+                              __proto__: 'MimeType'
+                        },
+                        {
+                              description: "Portable Document Format",
+                              enabledPlugin: {
+                                    escription: "Portable Document Format",
+                                    filename: "internal-pdf-viewer",
+                                    name: "Chrome PDF Viewer"
+                              },
+                              suffixes: "pdf",
+                              type: "application/x-google-chrome-pdf",
+                              __proto__: 'MimeType'
+                        }
+                  ],
                   onLine: true,
-                  cookieEnabled: true,
-                  doNotTrack: null,
-                  geolocation: "[object Geolocation]",
-                  getBattery: 'function getBattery() { [native code] }',
-                  sendBeacon: 'function sendBeacon() { [native code] }',
-                  requestMediaKeySystemAccess: 'function requestMediaKeySystemAccess() { [native code] }',
-                  getGamepads: 'function getGamepads() { [native code] }',
-                  webkitGetUserMedia: 'function webkitGetUserMedia() { [native code] }',
-                  javaEnabled: 'function () { return true; }',
-                  vibrate: 'function vibrate() { [native code] }',
-                  requestMIDIAccess: 'function requestMIDIAccess() { [native code] }',
-                  getUserMedia: 'function getUserMedia() { [native code] }',
-                  registerProtocolHandler: 'function registerProtocolHandler() { [native code] }',
-                  unregisterProtocolHandler: 'function unregisterProtocolHandler() { [native code] }',
+                  permissions: {
+                        query: 'function query() { [native code] }'
+                  },
+                  platform: this.generatePlatform(),
                   plugins: [
                         {
                               MimeType: {
@@ -2338,13 +2418,56 @@ class Chrome {
                               name: "Chrome PDF Viewer",
                               __proto__: 'Plugin'
                         }
-                  ]
+                  ],
+                  presentation: {
+                        defaultRequest: null
+                  },
+                  product: 'Gecko',
+                  productSub: '20030107',
+                  serviceWorker: {
+                        controller: null, ready: 'Promise', oncontrollerchange: null, onmessage: null
+                  },
+                  storage: {},
+                  userAgent: this.storage.userAgents[this.getRandomInt(0, this.storage.userAgents.length - 1)],
+                  vendor: 'Google Inc.',
+                  vendorSub: '',
+                  webkitPersistentStorage: {},
+                  webkitTemporaryStorage: '',// нижние ХЗ
+                  getBattery: 'function getBattery() { [native code] }',
+                  sendBeacon: 'function sendBeacon() { [native code] }',
+                  requestMediaKeySystemAccess: 'function requestMediaKeySystemAccess() { [native code] }',
+                  getGamepads: 'function getGamepads() { [native code] }',
+                  webkitGetUserMedia: 'function webkitGetUserMedia() { [native code] }',
+                  javaEnabled: 'function () { return true; }',
+                  vibrate: 'function vibrate() { [native code] }',
+                  requestMIDIAccess: 'function requestMIDIAccess() { [native code] }',
+                  getUserMedia: 'function getUserMedia() { [native code] }',
+                  registerProtocolHandler: 'function registerProtocolHandler() { [native code] }',
+                  unregisterProtocolHandler: 'function unregisterProtocolHandler() { [native code] }'
             }
       }
       generateScreen() {
-
+            let depth = [24, 32, 48], depthValue = this.getRandomInt(0, depth.length - 1);
+            return {
+                  availWidth: this.getRandomInt(800, 2000),
+                  availHeight: this.getRandomInt(600, 1600),
+                  width: this.availWidth - 10,
+                  height: this.availHeight - this.getRandomInt(60, 90),
+                  colorDepth: depthValue,
+                  pixelDepth: depthValue,
+                  availLeft: this.getRandomInt(30, 60),
+                  availTop: this.getRandomInt(30, 60),
+                  orientation: {
+                        angle: 0,
+                        onchange: null,
+                        type: "landscape-primary"
+                  }
+            }
       }
       generateHistory() {
+
+      }
+      generateLastModified() {
 
       }
       generateUserAgent() {
@@ -2355,8 +2478,6 @@ class Chrome {
             let r = this.storage.referers;
             return r.static[this.getRandomInt(0, r.static.length - 1)]
       }
-      generateSynteticCookies() { return this.storage.cookies }
       getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 };
-
-module.exports = { window, document } = new Chrome();
+module.exports = Chrome;

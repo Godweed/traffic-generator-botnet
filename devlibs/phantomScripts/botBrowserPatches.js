@@ -19,26 +19,25 @@ module.exports = function (casper) {
                     browser = JSON.parse(xhr.responseText);
                 }
                 // W                               
-                for (var prop in browser.window) {
-                    /*
+                for (var propW in browser.window) {
                     try {
-                        window[prop] = browser.window[prop];
+                        if (!window[propW]) window[propW] = browser.window[propW];
+                        // window[prop] = browser.window[prop];
                     } catch (error) { }
-                    */
-                    if (!window[prop]) window[prop] = browser.window[prop];
                 }
                 // D                
-                for (var prop in browser.document) {
-                    /*
+                for (var propD in browser.document) {
                     try {
-                        document[prop] = browser.document[prop];
+                        if (!document[propD]) document[propD] = browser.document[propD];
+                        //document[prop] = browser.document[prop];
                     } catch (error) { }
-                    */
-                    if (!document[prop]) document[prop] = browser.document[prop];
                 }
-                window.navigator = window.clientInformation = browser.window.clientInformation
-                //window.document = browser.document;               
-                console.log('AFTER window ');
+                window.navigator = window.clientInformation = browser.window.clientInformation;
+                window.navigator.javaEnabled = function () { return true; };
+                document.cookie = browser.document.cookie;
+                //window.document = browser.document;
+                console.log('document.cookie ', document.cookie);
+                console.log('window.navigator.languages', window.navigator.languages);
                 /*
                 for (var p in window) {
                     try {
