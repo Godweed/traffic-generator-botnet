@@ -11,8 +11,7 @@ for (var i = 0; i < numWorkers; i++) {
 
 http.createServer((request, response) => { }).listen(3000, () => { console.info('===-window & document factory work-==='); })
     .on(`request`, (request, response) => {
-        let browser = { window, document } = new Browser();
-        //console.log(`new Browser()`, browser.window.navigator, browser.document.cookie);
+        let browser = { window, document } = new Browser().browser; 
         response.writeHead(200, { 'Access-Control-Allow-Origin': '*' });
         response.write(JSON.stringify(browser));
         response.end();

@@ -1,10 +1,8 @@
-const Cookies = require(`../../cookie.js`),
-      userAgents = require(`../../UA_storage.js`),
-      referers = require(`../../referer.js`);
+const Cookies = require(`../../cookie.js`), userAgents = require(`../../UA_storage.js`), referers = require(`../../referer.js`);
 
 class Chrome {
       constructor() {
-
+            this.browser = { window: this.window, document: this.document }
       }
       /*      
       *
@@ -821,7 +819,7 @@ class Chrome {
                   xmlStandalone: {},
                   domain: '',//
                   referrer: {}, //
-                  cookie: new Cookies(),
+                  cookie: new Cookies().cookies,
                   lastModified: "04/11/2017 19:10:42", //
                   readyState: "complete",
                   title: '',
