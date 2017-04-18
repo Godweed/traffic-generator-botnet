@@ -1,8 +1,8 @@
 {
     "targetURL": "http://web-dreamteam.com/",
-    "header": "header nav",
-    "logo": "header nav a.chlidren_1",
-    "aside": "aside",
-    "content": "#main-content",
-    "footer": "footer"
+    "header": "#mega-menu",
+    "logo": "#logo a",
+    "aside": "body",
+    "content": ".content-main",
+    "footer": ".footer"
 }
