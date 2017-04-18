@@ -377,8 +377,7 @@ class Safari {
                   clientInformation:
                   {
                         doNotTrack: {},
-                        plugins:
-                        {
+                        plugins: {
                               '0':
                               {
                                     '0':

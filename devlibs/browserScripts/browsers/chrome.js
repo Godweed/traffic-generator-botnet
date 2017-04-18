@@ -505,20 +505,20 @@ class Chrome {
                   },
                   defaultstatus: '',
                   defaultStatus: '',
-                  screenTop: {},//
-                  screenLeft: {},//
+                  screenTop: this.getRandomInt(24, 50),
+                  screenLeft: this.getRandomInt(10, 50),
                   clientInformation: this.generateNavigator(),
                   devicePixelRatio: 1,
-                  outerHeight: {},//
-                  outerWidth: {},//
-                  screenY: {},//
-                  screenX: {},//
-                  pageYOffset: {},
-                  scrollY: {},//
-                  pageXOffset: {},//
-                  scrollX: {},
-                  innerHeight: {},
-                  innerWidth: {},
+                  outerHeight: this.getRandomInt(600, 1600),
+                  outerWidth: this.getRandomInt(800, 2000),
+                  screenY: this.getRandomInt(24, 50),
+                  screenX: this.getRandomInt(10, 50),
+                  pageYOffset: 0,
+                  scrollY: 0,
+                  pageXOffset: 0,
+                  scrollX: 0,
+                  innerHeight: this.getRandomInt(600, 1600),
+                  innerWidth: this.getRandomInt(800, 2000),
                   screen: this.generateScreen(),
                   external: {
                         AddSearchProvider: 'function AddSearchProvider() { [native code] }',
@@ -541,7 +541,7 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  navigator: this.generateNavigator(),
+                  navigator: this.clientInformation,
                   frameElement: null,
                   opener: null,
                   length: null,
@@ -817,8 +817,8 @@ class Chrome {
                   xmlEncoding: {},
                   xmlVersion: {},
                   xmlStandalone: {},
-                  domain: '',//
-                  referrer: {}, //
+                  domain: '',
+                  referrer: '',
                   cookie: new Cookies().cookies,
                   lastModified: "04/11/2017 19:10:42", //
                   readyState: "complete",
@@ -2258,8 +2258,8 @@ class Chrome {
                         removeEventListener: 'function removeEventListener() { [native code] }',
                         dispatchEvent: 'function dispatchEvent() { [native code] }'
                   },
-                  mimeTypes: [
-                        {
+                  mimeTypes: {
+                        0: {
                               description: "",
                               enabledPlugin: {
                                     description: "",
@@ -2270,7 +2270,7 @@ class Chrome {
                               type: "application/pdf",
                               __proto__: 'MimeType',
                         },
-                        {
+                        1: {
                               description: "Shockwave Flash",
                               enabledPlugin: {
                                     description: "Shockwave Flash 25.0 r0",
@@ -2281,7 +2281,7 @@ class Chrome {
                               type: "application/x-shockwave-flash",
                               __proto__: 'MimeType'
                         },
-                        {
+                        2: {
                               description: "FutureSplash Player",
                               enabledPlugin: {
                                     description: "Shockwave Flash 25.0 r0",
@@ -2292,7 +2292,7 @@ class Chrome {
                               type: "application/futuresplash",
                               __proto__: 'MimeType'
                         },
-                        {
+                        3: {
                               description: "Widevine Content Decryption Module",
                               enabledPlugin: {
                                     description: "Enables Widevine licenses for playback of HTML audio/video content. (version: 1.4.8.962)",
@@ -2303,7 +2303,7 @@ class Chrome {
                               type: "application/x-ppapi-widevine-cdm",
                               __proto__: 'MimeType'
                         },
-                        {
+                        4: {
                               description: "Native Client Executable",
                               enabledPlugin: {
                                     description: "",
@@ -2314,7 +2314,7 @@ class Chrome {
                               type: "application/x-nacl",
                               __proto__: 'MimeType'
                         },
-                        {
+                        5: {
                               description: "Portable Native Client Executable",
                               enabledPlugin: {
                                     description: "",
@@ -2325,7 +2325,7 @@ class Chrome {
                               type: "application/x-pnacl",
                               __proto__: 'MimeType'
                         },
-                        {
+                        6: {
                               description: "Portable Document Format",
                               enabledPlugin: {
                                     escription: "Portable Document Format",
@@ -2336,14 +2336,15 @@ class Chrome {
                               type: "application/x-google-chrome-pdf",
                               __proto__: 'MimeType'
                         }
-                  ],
+                  },
                   onLine: true,
                   permissions: {
                         query: 'function query() { [native code] }'
                   },
                   platform: this.generatePlatform(),
-                  plugins: [
-                        {
+                  //  http://stackoverflow.com/questions/5834980/detect-flash-version-using-javascript             
+                  plugins: {
+                        0: {
                               MimeType: {
                                     description: "",
                                     enabledPlugin: 'Plugin',
@@ -2356,7 +2357,7 @@ class Chrome {
                               name: "Chrome PDF Viewer",
                               __proto__: 'Plugin'
                         },
-                        {
+                        1: {
                               MimeType: {
                                     description: "",
                                     enabledPlugin: 'Plugin',
@@ -2375,7 +2376,7 @@ class Chrome {
                               name: "Shockwave Flash",
                               __proto__: 'Plugin'
                         },
-                        {
+                        2: {
                               MimeType: {
                                     description: "",
                                     enabledPlugin: 'Plugin',
@@ -2388,7 +2389,7 @@ class Chrome {
                               name: "Widevine Content Decryption Module",
                               __proto__: 'Plugin'
                         },
-                        {
+                        3: {
                               MimeType: {
                                     description: "",
                                     enabledPlugin: 'Plugin',
@@ -2407,15 +2408,16 @@ class Chrome {
                               name: "Native Client",
                               __proto__: 'Plugin'
                         },
-                        {
+                        4: {
                               0: "MimeType",
                               description: "Portable Document Format",
                               filename: "internal-pdf-viewer",
                               length: 1,
                               name: "Chrome PDF Viewer",
                               __proto__: 'Plugin'
-                        }
-                  ],
+                        },
+                        length: 5
+                  },
                   presentation: {
                         defaultRequest: null
                   },
@@ -2444,12 +2446,13 @@ class Chrome {
             }
       }
       generateScreen() {
-            let depth = [24, 32, 48], depthValue = this.getRandomInt(0, depth.length - 1);
+            let depth = [24, 32, 48], depthValue = depth[this.getRandomInt(0, depth.length - 1)],
+                  synteticAvailWidth = this.getRandomInt(800, 2000), synteticAvailHeight = this.getRandomInt(600, 1600);
             return {
-                  availWidth: this.getRandomInt(800, 2000),
-                  availHeight: this.getRandomInt(600, 1600),
-                  width: this.availWidth - 10,
-                  height: this.availHeight - this.getRandomInt(60, 90),
+                  availWidth: synteticAvailWidth,
+                  availHeight: synteticAvailHeight,
+                  width: synteticAvailWidth - 10,
+                  height: synteticAvailHeight - this.getRandomInt(60, 90),
                   colorDepth: depthValue,
                   pixelDepth: depthValue,
                   availLeft: this.getRandomInt(30, 60),
@@ -2461,19 +2464,8 @@ class Chrome {
                   }
             }
       }
-      generateHistory() {
-
-      }
       generateLastModified() {
 
-      }
-      generateUserAgent() {
-            let ua = userAgents;
-            return ua[this.getRandomInt(0, ua.length - 1)]
-      }
-      generateReferer() {
-            let r = referers;
-            return r.static[this.getRandomInt(0, r.static.length - 1)]
       }
       getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 };

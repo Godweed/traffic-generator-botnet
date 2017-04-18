@@ -97,7 +97,7 @@ for (let code of generateAlphaLetters()) {
 */
 class Cookie {
     constructor() {
-        this.cookies = '_ga=' + this._ga + ';_gat=1;' + 'PREF=' + this.PREF;
+        this.cookies = `_ga=${this._ga};_gat=1;PREF=${this.PREF};_ym_uid=${this._ym_uid};_ym_isad=2;_ym_visorc_42409674=w`;
     }
     get _ga() {
         return `GA1.2.${generateCookieSubstring(synteticIntegers, 9)}.${getRandomInt(11, 14)}${generateCookieSubstring(synteticIntegers, 8)}`;

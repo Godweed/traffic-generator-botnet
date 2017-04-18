@@ -10,6 +10,9 @@ module.exports = function (casper) {
                 *
                 *
                 */
+                //console.log('  {{BEFORE}} - window.navigator', JSON.stringify(window.navigator));
+                //console.log('  {{BEFORE}} - document.referrer ', document.referrer);
+
                 var xhr = new XMLHttpRequest(), browser;
                 xhr.open('GET', 'http://localhost:3000/', false);
                 xhr.send();
@@ -18,7 +21,7 @@ module.exports = function (casper) {
                 } else {
                     browser = JSON.parse(xhr.responseText);
                 }
-                // W                               
+                // W              
                 for (var propW in browser.window) {
                     try {
                         if (!window[propW]) window[propW] = browser.window[propW];
@@ -33,11 +36,13 @@ module.exports = function (casper) {
                     } catch (error) { }
                 }
                 window.navigator = window.clientInformation = browser.window.clientInformation;
+                window.screen = browser.window.screen;
+                window.history = browser.window.history;
                 window.navigator.javaEnabled = function () { return true; };
                 document.cookie = browser.document.cookie;
-                //window.document = browser.document;
-                console.log('document.cookie ', document.cookie);
-                console.log('window.navigator.languages', window.navigator.languages);
+                //window.document = browser.document;           
+                //console.log('  {{AFTER}} - document.referrer ', document.referrer);
+                console.log('  {{AFTER}} - window.navigator', JSON.stringify(window.navigator.plugins));
                 /*
                 for (var p in window) {
                     try {
