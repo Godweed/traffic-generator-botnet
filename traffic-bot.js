@@ -102,8 +102,7 @@ casper.waitForSelector('iframe', function () {
 /*
             Шаг 3 - Создаём активность:
 */
-//INCLUDES.clickFraud(casper).chitica()
-//INCLUDES.clickFraud(casper).bidvertiser();
+
 
 casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/api.js');
@@ -115,6 +114,12 @@ casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
+
+if (CTR > 60) {
+    INCLUDES.clickFraud(casper).chitica()
+    INCLUDES.clickFraud(casper).bidvertiser();
+}
+
 casper.then(function () {
     INCLUDES.PRETENDER_indexPage(this);
 }).waitForSelector('body', function () { console.log("(!-!)=>    Дождался загрузки внутренней статьи @{header}   ", this.getCurrentUrl()); });
@@ -133,6 +138,9 @@ casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
+//
+if (CTR > 50) { INCLUDES.clickFraud(casper).chitica(); }
+//
 casper.then(function () {
     INCLUDES.PRETENDER_articlePageHeader(this);
 }).waitForSelector('body', function () { console.log("(-!-)=>    Дождался загрузки внутренней статьи @{sideBar}   ", this.getCurrentUrl()); });
@@ -151,6 +159,9 @@ casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
+//
+if (CTR < 50) { INCLUDES.clickFraud(casper).bidvertiser(); }
+//
 casper.then(function () {
     INCLUDES.PRETENDER_articlePageAside(this);
 });

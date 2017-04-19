@@ -12,19 +12,18 @@ module.exports = function (casper) {
             chitica: function () {
                   casper = this.casper;
                   casper.then(function () {
-                        console.log('chitica');
                         this.page.injectJs('devlibs/browserScripts/api.js');
                         this.evaluate(function () {
                               document.body.scrollTop = 0;
                               scrollTo(document.body, document.body.scrollHeight, getRandomInt(1400, 1900));
                               try {
-                                    var dispatchElement = document.querySelectorAll('#chitikaAdBlock-' + getRandomInt(1, 3) + ' iframe')
+                                    var dispatchElement = document.querySelector('#chitikaAdBlock-' + getRandomInt(1, 3) + ' iframe')
                                           , step = dispatchElement.contentWindow.document.querySelector('a')
                                           , minX = dispatchElement.offsetLeft
                                           , maxX = dispatchElement.offsetLeft + dispatchElement.offsetWidth
                                           , minY = dispatchElement.offsetTop
                                           , maxY = dispatchElement.offsetTop + dispatchElement.offsetHeight;
-                                    console.log('bidvertiser  <a/>  ', step);
+                                    console.log('chitica  <a/>  ', step);
                                     var evt = document.createEvent("MouseEvents"), px = getRandomInt(minX, maxX), py = getRandomInt(minY, maxY);
                                     evt.initMouseEvent('mousemove', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, dispatchElement);
                                     dispatchElement.dispatchEvent(evt);
@@ -36,7 +35,7 @@ module.exports = function (casper) {
                                     console.log('bidvertiser error', error);
                               }
                         });
-                        this.wait(15 * 1000, function () { });
+                        this.wait(50 * 1000, function () { });
                   })
                         .waitForSelector('body', function () {
                               console.log("(-$$$-)=>    Я кликнул по рекламе и оказался на   ", this.getCurrentUrl());
@@ -55,9 +54,6 @@ module.exports = function (casper) {
                                     this.mouseEvent('mousemove', 'body');
                               }
                               this.wait(getRandomInt(3, 6) * 1000, function () { });
-                              var targlink = document.querySelector('a');
-                              targlink.removeAttribute('target');
-                              targlink.click();
                         });
             },
             //
@@ -92,7 +88,7 @@ module.exports = function (casper) {
                                     console.log('bidvertiser error', error);
                               }
                         });
-                        this.wait(15 * 1000, function () { });
+                        this.wait(50 * 1000, function () { });
                   })
                         .waitForSelector('body', function () {
                               console.log("(-$$$-)=>    Я кликнул по рекламе и оказался на   ", this.getCurrentUrl());
@@ -111,9 +107,6 @@ module.exports = function (casper) {
                                     this.mouseEvent('mousemove', 'body');
                               }
                               this.wait(getRandomInt(3, 6) * 1000, function () { });
-                              var targlink = document.querySelector('a');
-                              targlink.removeAttribute('target');
-                              targlink.click();
                         });
             },
             //
