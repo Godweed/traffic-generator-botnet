@@ -42,7 +42,7 @@ module.exports = function (casper) {
                 document.cookie = browser.document.cookie;
                 //window.document = browser.document;           
                 //console.log('  {{AFTER}} - document.referrer ', document.referrer);
-                console.log('  {{AFTER}} - window.navigator', JSON.stringify(window.navigator.plugins));
+                //console.log('  {{AFTER}} - window.navigator', JSON.stringify(window.navigator.plugins));
                 /*
                 for (var p in window) {
                     try {

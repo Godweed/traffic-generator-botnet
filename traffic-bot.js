@@ -35,7 +35,7 @@ var INCLUDES = {
         stepTimeout: 90000,
         viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
         pageSettings: {
-            customHeaders: PRETENDER_headers,
+            //customHeaders: PRETENDER_headers,
             loadImages: true,
             loadPlugins: true
         },
@@ -49,8 +49,8 @@ var INCLUDES = {
         'organicSearch',
         'organicSearch',
         'organicSearch',
+        'organicSearch',
         'direct',
-        'referer',
         'referer',
         'referer',
         'referer'
@@ -91,7 +91,7 @@ if (startStepChance == 'organicSearch') {
 */
 
 
-casper.waitForSelector('body', function () {
+casper.waitForSelector('iframe', function () {
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
     //this.capture('index.png');
     this.page.injectJs('devlibs/browserScripts/scroll.js');
@@ -102,7 +102,8 @@ casper.waitForSelector('body', function () {
 /*
             Шаг 3 - Создаём активность:
 */
-//INCLUDES.clickFraud(casper).directadvert();
+//INCLUDES.clickFraud(casper).chitica()
+//INCLUDES.clickFraud(casper).bidvertiser();
 
 casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/api.js');
