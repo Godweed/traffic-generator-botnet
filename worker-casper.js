@@ -2,9 +2,7 @@ var exec = require('child_process').exec
     , net = require('net')
     , scheduleCounter = 0
     , cores = require('os').cpus().length;
-
 const command = 'casperjs --proxy-type=socks5 --proxy=127.0.0.1:9050 --ssl-protocol=any --ignore-ssl-errors=true --web-security=false traffic-bot.js';
-
 function runPretenders(command) {
     attemptRenewTorSession(function (e, msg) {
         if (msg) {
@@ -15,14 +13,11 @@ function runPretenders(command) {
         }
     });
 }
-
-
-for (let i = 0; i < cores * 20; i += 1) {
+for (let i = 0; i < cores * 10; i += 1) {
     runPretenders(command);
 }
-
 setInterval(function () {
-    for (let i = 0; i < cores * 15; i += 1) {
+    for (let i = 0; i < cores * 10; i += 1) {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
@@ -55,7 +50,6 @@ function attemptRenewTorSession(done) {
         }
     });
 }
-//
 function changeIPadress(commands, done) {
     var socket = net.connect({
         host: 'localhost',
@@ -72,7 +66,6 @@ function changeIPadress(commands, done) {
         data += chunk.toString();
     });
     socket.on('end', function () {
-        //console.log('>>>>>>>>>>>>>>>>>>>>>>  CONGRATULATION!!!  changeIPadress success');
         done(null, data);
     });
 }

@@ -33,7 +33,7 @@ var INCLUDES = {
     , casper = require('casper').create({
         waitTimeout: 90000,
         stepTimeout: 90000,
-        viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
+        //viewportSize: { width: getRandomInt(1024, 2200), height: getRandomInt(768, 1900) },
         pageSettings: {
             //customHeaders: PRETENDER_headers,
             loadImages: true,
@@ -54,6 +54,7 @@ var INCLUDES = {
         'referer',
         'referer',
         'referer'
+        //'direct'
     ]
     //
     // BOT INIT:
@@ -93,7 +94,6 @@ if (startStepChance == 'organicSearch') {
 
 casper.waitForSelector('iframe', function () {
     console.log("|=|=|=|     Дождался загрузки контента MFA сайта: ", this.getCurrentUrl());
-    //this.capture('index.png');
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
@@ -110,14 +110,15 @@ casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/actions.js');
     this.wait(getRandomInt(5, 10) * 1000, function () { });
 });
+
 casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 
-if (CTR > 60) {
-    INCLUDES.clickFraud(casper).chitica()
-    INCLUDES.clickFraud(casper).bidvertiser();
+if (CTR > 90) {
+    INCLUDES.clickFraud(casper).adnow();
+    INCLUDES.clickFraud(casper).chitica();
 }
 
 casper.then(function () {
@@ -139,7 +140,14 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 //
-if (CTR > 50) { INCLUDES.clickFraud(casper).chitica(); }
+if (CTR > 90) {
+    INCLUDES.clickFraud(casper).adnow();
+    INCLUDES.clickFraud(casper).chitica();
+}
+casper.then(function () {
+    this.click('a#clickLInk-1');
+    this.click('a#clickLInk-2');
+});
 //
 casper.then(function () {
     INCLUDES.PRETENDER_articlePageHeader(this);
@@ -159,9 +167,7 @@ casper.then(function () {
     this.page.injectJs('devlibs/browserScripts/scroll.js');
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
-//
-if (CTR < 50) { INCLUDES.clickFraud(casper).bidvertiser(); }
-//
+
 casper.then(function () {
     INCLUDES.PRETENDER_articlePageAside(this);
 });

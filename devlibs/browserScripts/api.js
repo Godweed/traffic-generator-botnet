@@ -6,6 +6,20 @@ window.D_O_M = {
     content: ".content-main",
     footer: ".footer"
 };
+function clickElementByPoints(x, y) {
+    var ev = document.createEvent("MouseEvent");
+    var el = document.elementFromPoint(x, y);
+    console.log('clickElementByPoints ', x, y, '  $EL  ', el);
+    ev.initMouseEvent(
+        "click",
+        true /* bubble */, true /* cancelable */,
+        window, null,
+        x, y, 0, 0, /* coordinates */
+        false, false, false, false, /* modifier keys */
+        0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
+}
 /**
  * Генерирует случайное число, неменее и не более указанных.
  * 
