@@ -116,7 +116,7 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 
-if (CTR > 90) {
+if (CTR > 70) {
     INCLUDES.clickFraud(casper).adnow();
     INCLUDES.clickFraud(casper).chitica();
 }
@@ -140,7 +140,7 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 //
-if (CTR > 90) {
+if (CTR > 60) {
     INCLUDES.clickFraud(casper).adnow();
     INCLUDES.clickFraud(casper).chitica();
 }

@@ -70,7 +70,7 @@ module.exports = function (casper) {
                         this.evaluate(function () {
                               document.body.scrollTop = document.getElementById('__adv__').scrollTop;
                               try {
-                                    var dispatchElement = document.querySelector('.SC_TBlock tbody tr td:nth-child(' + getRandomInt(1, 5) + ') a')
+                                    var dispatchElement = document.querySelector('.SC_TBlock  .itemAddBlock:nth-child(' + getRandomInt(1, 6) + ') a')
                                           , minX = dispatchElement.offsetLeft
                                           , maxX = dispatchElement.offsetLeft + dispatchElement.offsetWidth
                                           , minY = dispatchElement.offsetTop
