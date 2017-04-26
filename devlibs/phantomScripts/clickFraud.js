@@ -17,7 +17,7 @@ module.exports = function (casper) {
                         this.evaluate(function () {
                               document.body.scrollTop = document.getElementById('__adv__').scrollTop;
                               try {
-                                    var dispatchElement = document.querySelector('#chitikaAdBlock-' + getRandomInt(1, 3) + ' iframe');//document.getElementsByClassName('chitikaAdContainer')[getRandomInt(0, 2)]
+                                    var dispatchElement = document.querySelector('#__adv__ > div:last-child a')//document.querySelector('#chitikaAdBlock-' + getRandomInt(1, 3) + ' iframe');//document.getElementsByClassName('chitikaAdContainer')[getRandomInt(0, 2)]
                                     document.body.scrollTop = dispatchElement.scrollTop;
                                     var targetADV = dispatchElement.contentWindow.document.querySelector('a')
                                           , minX = dispatchElement.offsetLeft
@@ -29,7 +29,7 @@ module.exports = function (casper) {
                                     evt.initMouseEvent('mousemove', true, true, window, 1, 1, 1, px, py, false, false, false, false, 0, dispatchElement);
                                     dispatchElement.dispatchEvent(evt);
                                     dispatchElement.dispatchEvent(evt);
-                                    //targetADV.removeAttribute('target');
+                                    //targetADV.removeAttribute('target'); 
                                     dispatchElement.click();
                                     //clickElementByPoints(minX + 50, minY + 50);
                               } catch (error) {
@@ -40,7 +40,7 @@ module.exports = function (casper) {
                   })
                         .waitForSelector('body', function () {
                               console.log("(-$$$-)=>    Я кликнул по рекламе и оказался на   ", this.getCurrentUrl());
-                              this.wait(getRandomInt(3, 6) * 1000, function () { });                              
+                              this.wait(getRandomInt(3, 6) * 1000, function () { });
                               for (var i = 0; i < 50; i += 1) {
                                     this.scrollTo(getRandomInt(10, 500), getRandomInt(3000, 3100));
                                     this.scrollTo(getRandomInt(100, 700), getRandomInt(3200, 3300));
@@ -70,7 +70,7 @@ module.exports = function (casper) {
                         this.evaluate(function () {
                               document.body.scrollTop = document.getElementById('__adv__').scrollTop;
                               try {
-                                    var dispatchElement = document.querySelector('.SC_TBlock  .itemAddBlock:nth-child(' + getRandomInt(1, 6) + ') a')
+                                    var dispatchElement = document.querySelector('.SC_TBlock:nth-child(' + getRandomInt(1, 2) + ') .itemAddBlock:nth-child(' + getRandomInt(1, 6) + ') a')
                                           , minX = dispatchElement.offsetLeft
                                           , maxX = dispatchElement.offsetLeft + dispatchElement.offsetWidth
                                           , minY = dispatchElement.offsetTop
@@ -91,7 +91,7 @@ module.exports = function (casper) {
                   })
                         .waitForSelector('body', function () {
                               console.log("(-$$$-)=>    Я кликнул по рекламе и оказался на   ", this.getCurrentUrl());
-                              this.wait(getRandomInt(3, 6) * 1000, function () { });                            
+                              this.wait(getRandomInt(3, 6) * 1000, function () { });
                               for (var i = 0; i < 50; i += 1) {
                                     this.scrollTo(getRandomInt(10, 500), getRandomInt(3000, 3100));
                                     this.scrollTo(getRandomInt(100, 700), getRandomInt(3200, 3300));

@@ -14,7 +14,7 @@ module.exports = function (casper) {
                 //console.log('  {{BEFORE}} - document.referrer ', document.referrer);
 
                 var xhr = new XMLHttpRequest(), browser;
-                xhr.open('GET', 'http://7dc19727.ngrok.io', false);
+                xhr.open('GET', 'http://127.0.0.1:3000', false);
                 xhr.send();
                 if (xhr.status != 200) {
                     console.log("AJAX !=200  ", xhr.status + ': ' + xhr.statusText);
