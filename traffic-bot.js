@@ -116,7 +116,7 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 
-if (CTR > 33) {
+if (CTR > 40) {
     INCLUDES.clickFraud(casper).adnow();
 }
 
@@ -139,13 +139,9 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 //
-if (CTR > 33) {
+if (CTR > 40) {
     INCLUDES.clickFraud(casper).adnow();
 }
-casper.then(function () {
-    this.click('a#clickLInk-1');
-    this.click('a#clickLInk-2');
-});
 //
 casper.then(function () {
     INCLUDES.PRETENDER_articlePageHeader(this);

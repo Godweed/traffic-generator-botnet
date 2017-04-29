@@ -1,5 +1,8 @@
 module.exports = {
     static: [
+"https://adnow.com/?referral=279961",
+"https://adnow.com/?referral=279961",
+
         "https://nodejs.org",
         "https://google.com",
         "https://www.nytimes.com/",

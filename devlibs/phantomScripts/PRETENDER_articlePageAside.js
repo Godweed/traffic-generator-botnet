@@ -1,12 +1,12 @@
 //
 // 0.0) Читаем статью:
 // 
-module.exports = function (self) {       
+module.exports = function (self) {
       //
-      // Возвращаемся на главную
+      //  Меню в футере
       //
-      self.click(S.logo);
+      self.click('footer .footer-navigation-list:nth-child(' + getRandomInt(1, 2) + ') li:nth-child(' + getRandomInt(1, 3) + ') a');
       self.waitForSelector('body', function () {
-            console.log("<=()    Вернулся из нутра в index.php ", this.getCurrentUrl());
+            console.log("<=()    Футер меню ", this.getCurrentUrl());
       });
 }

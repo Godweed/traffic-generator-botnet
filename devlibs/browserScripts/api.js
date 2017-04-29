@@ -1,10 +1,10 @@
 //
 window.D_O_M = {
-    header: "#mega-menu",
+    header: "ul.navigation-list",
     logo: "#logo a",
-    aside: "body",
-    content: ".content-main",
-    footer: ".footer"
+    aside: "#__adv__",
+    content: "main",
+    footer: "footer"
 };
 function clickElementByPoints(x, y) {
     var ev = document.createEvent("MouseEvent");
