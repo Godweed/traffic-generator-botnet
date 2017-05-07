@@ -20,7 +20,7 @@ var INCLUDES = {
     , UA_storage = require('./devlibs/UA_storage.js')
     , keywords = require('./devlibs/keywords.js')
     , directs = require('./devlibs/direct.js')
-    , startRandomRefererWashingPoint = REF.static[getRandomInt(0, REF.static.length - 1)]
+    , startRandomRefererWashingPoint = REF[getRandomInt(0, REF.length - 1)]
 
     , PRETENDER_headers = {
         "Cache-Control": "no-cache",
@@ -116,7 +116,7 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 
-if (CTR > 40) {
+if (CTR ) {
     INCLUDES.clickFraud(casper).adnow();
 }
 
@@ -139,7 +139,7 @@ casper.then(function () {
     this.wait(getRandomInt(3, 6) * 1000, function () { });
 });
 //
-if (CTR > 40) {
+if (CTR ) {
     INCLUDES.clickFraud(casper).adnow();
 }
 //

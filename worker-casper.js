@@ -13,7 +13,7 @@ function runPretenders(command) {
         }
     });
 }
-for (let i = 0; i < cores * 20; i += 1) {
+for (let i = 0; i < cores * 25; i += 1) {
     runPretenders(command);
 }
 setInterval(function () {
@@ -21,7 +21,7 @@ setInterval(function () {
         runPretenders(command);
     }
     console.log(`CasperJS  <HomoSapiensPretender/>  work:     << ${scheduleCounter * cores} >>     times;`);
-}, 2.5 * 60000);
+}, 2 * 60000);
 //
 //
 // Функции смены IP:
